@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/C0SMlC/CookIT/issues"
   },
-  "homepage": "https://github.com/C0SMlC/CookIT#readme"
+  "homepage": "https://github.com/C0SMlC/CookIT#readme",
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
 }
