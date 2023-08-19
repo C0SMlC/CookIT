@@ -1,0 +1,19 @@
+{
+  "name": "cookit",
+  "version": "1.0.0",
+  "description": "Cookit is your go-to culinary companion, offering a treasure trove of recipes to explore. With our intuitive meal planner, you can effortlessly map out your week's meals, and our handy ingredient list feature makes shopping a breeze. Say goodbye to kitchen chaos and hello to stress-free cooking with Cookit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/C0SMlC/CookIT.git"
+  },
+  "author": "Pratik Pendurkar, Yash Pokhriyal, Mohammad Faizan, Pratham Patil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/C0SMlC/CookIT/issues"
+  },
+  "homepage": "https://github.com/C0SMlC/CookIT#readme"
+}
