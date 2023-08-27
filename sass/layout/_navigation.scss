@@ -1,16 +1,25 @@
 .navigation {
   color: $default-font-color;
+  border-bottom: 2px solid black;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-left: 1.2rem;
 
   &__nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
   }
 
   &__list {
     display: flex;
     justify-content: space-between;
     list-style-type: none;
+    position: absolute;
+    width: 15%;
+    left: 15%;
+    gap: 2.2rem;
   }
 
   &__link {
@@ -23,5 +32,56 @@
   &__features {
     display: flex;
     list-style-type: none;
+    gap: 4rem;
+    padding-right: 2.8rem;
+  }
+
+  &__main-logo {
+    height: 8.2rem;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+  &__searchbox {
+    position: absolute;
+    left: 38%;
+  }
+
+  &__search {
+    height: 5.2rem;
+    width: 500px;
+    border-radius: 50px;
+    border: none;
+    background-color: #dedede;
+  }
+  &__search::placeholder {
+    position: absolute;
+    left: 10%;
+  }
+
+  &__search-btn {
+    width: 20rem;
+    height: 6rem;
+    border: none;
+    border-radius: 30px;
+    position: absolute;
+    right: 15%;
+    background: rgb(104, 29, 29);
+    background: linear-gradient(
+      130deg,
+      rgba(104, 29, 29, 1) 0%,
+      rgba(210, 42, 21, 1) 77%
+    );
+    color: $color-white;
+    font-size: $font-size-medium;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  &__search-icon {
+    display: inline-block;
+    position: absolute;
+    left: 10%;
+    top: 28%;
   }
 }

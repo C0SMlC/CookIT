@@ -1,0 +1,19 @@
+.btn {
+  &-header {
+    padding: 1.8rem 3.6rem;
+    border-radius: 50px;
+  }
+  &_red {
+    display: inline-block;
+    text-decoration: none;
+    font-size: $font-size-medium;
+    color: $color-tertiary;
+    background: rgb(104, 29, 29);
+    background: linear-gradient(
+      130deg,
+      rgba(104, 29, 29, 1) 0%,
+      rgba(230, 42, 21, 1) 77%
+    );
+    margin-top: 2.2rem;
+  }
+}

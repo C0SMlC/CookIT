@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  background-image: url('../img/header/header_main.png');
+  background-size: cover;
+
+  &__main-img {
+    height: 80vh;
+    transform: rotateX('40deg');
+  }
+
+  &-box {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 35%;
+    top: 28%;
+  }
+
+  &-main {
+    font-size: $font-size-3xlarge;
+    font-weight: 500;
+
+    &-span {
+      font-size: $font-size-3xlarge;
+      color: $color-primary-light;
+    }
+  }
+
+  &-sub {
+    font-size: $font-size-2xlarge;
+    font-weight: 500;
+  }
+
+  &__btn-box {
+    align-self: flex-end;
+  }
+}

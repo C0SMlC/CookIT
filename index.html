@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/style.css" />
     <title>Document</title>
   </head>
@@ -15,7 +21,7 @@
             height="93"
             viewBox="0 0 94 93"
             alt="CookIT Logo"
-            class="header__main-logo"
+            class="navigation__main-logo"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -83,10 +89,14 @@
           </li>
         </ul>
         <div class="navigation__searchbox">
-          <input type="text" class="navigation__search" />
+          <input
+            type="text"
+            class="navigation__search"
+            placeholder="Search over 1,000,000 recipes..."
+          />
           <button class="navigation__search-btn">
-            <span
-              ><svg
+            <span class="navigation__search-icon">
+              <svg
                 width="23"
                 height="24"
                 viewBox="0 0 23 24"
@@ -98,7 +108,7 @@
                   fill="white"
                 />
               </svg> </span
-            >Search
+            ><span>Search</span>
           </button>
         </div>
         <ul class="navigation__features">
@@ -193,35 +203,88 @@
       </nav>
     </div>
     <header class="header">
-      <a class="header__logo-box">
+      <div class="header__logo-box">
         <img
           src="img/header/header_img1.png"
           alt="Delicious Food"
-          class="header__main-logo"
+          class="header__main-img"
         />
-      </a>
-      <div class="header__text-box">
-        <h1>
-          <span class="heading-main">MILLIONS OF RECIPES</span>
-          <span class="heading-sub">AT YOUR FINGERTIP</span>
+      </div>
+      <div class="header-box">
+        <h1 class="header__text-box">
+          <span class="header-sub">MILLIONS OF RECIPES</span>
+          <br />
+          <span class="header-main"
+            >AT YOUR FINGERTIP<span class="header-main-span">.</span></span
+          >
         </h1>
-        <a class="btn btn-header btn_white" href="#">Upload Your Recipes</a>
-        <a class="btn btn-header btn_white" href="#">Search For Recipes</a>
+        <div class="header__btn-box">
+          <a class="btn btn-header btn_red" href="#">Upload Your Recipes</a>
+          <a class="btn btn-header btn_red" href="#">Search For Recipes</a>
+        </div>
       </div>
     </header>
     <section class="categories">
-      <h2 class="categories__title">Categories</h2>
+      <h2 class="categories__title heading-tertiary">
+        Categories<span class="header-main-span">.</span>
+      </h2>
       <div class="categories__box">
         <div class="categories__item-box">
-          <img src="./img/categories/category_1.png" />
+          <img
+            src="./img/categories/category_1.png"
+            class="categories__item-img"
+          />
+          <h3 class="categories__item-heading">Breakfast</h3>
+        </div>
+        <div class="categories__item-box">
+          <img
+            src="./img/categories/category_1.png"
+            class="categories__item-img"
+          />
+          <h3 class="categories__item-heading">Breakfast</h3>
+        </div>
+        <div class="categories__item-box">
+          <img
+            src="./img/categories/category_1.png"
+            class="categories__item-img"
+          />
+          <h3 class="categories__item-heading">Breakfast</h3>
+        </div>
+        <div class="categories__item-box">
+          <img
+            src="./img/categories/category_1.png"
+            class="categories__item-img"
+          />
+          <h3 class="categories__item-heading">Breakfast</h3>
+        </div>
+        <div class="categories__item-box">
+          <img
+            src="./img/categories/category_1.png"
+            class="categories__item-img"
+          />
+          <h3 class="categories__item-heading">Breakfast</h3>
+        </div>
+        <div class="categories__item-box">
+          <img
+            src="./img/categories/category_1.png"
+            class="categories__item-img"
+          />
           <h3 class="categories__item-heading">Breakfast</h3>
         </div>
       </div>
     </section>
-    <section class="statistics">
+    <section class="statistic">
       <div class="statistic__item-box">
         <p class="statistic__item-number">12K+</p>
-        <p class="statistic__item-number">User Recipes</p>
+        <p class="statistic__item-title">User Recipes</p>
+      </div>
+      <div class="statistic__item-box">
+        <p class="statistic__item-number">125K+</p>
+        <p class="statistic__item-title">Shopping List Generated</p>
+      </div>
+      <div class="statistic__item-box">
+        <p class="statistic__item-number">125K+</p>
+        <p class="statistic__item-title">Recipes Uploaded</p>
       </div>
     </section>
     <section></section>
