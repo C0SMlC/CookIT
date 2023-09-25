@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 6.2rem 7.2rem;
+  margin-bottom: 0;
+  background-color: $color-tertiary;
+  &__img {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+  }
+  &__img_box {
+    background-position: center;
+    background-size: cover;
+    flex: 1;
+  }
+  &__text_box {
+    padding: 15.4rem 5.2rem;
+    flex: 1;
+  }
+  &__title {
+    padding-top: 1.2rem;
+    width: 90%;
+  }
+  &__text {
+    padding-top: 4.2rem;
+    width: 80%;
+  }
+}
+
+.footer__copyright {
+  text-align: center;
+  padding: 4.2rem 0;
+  font-size: $font-size-small;
+}

@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/C0SMlC/CookIT.git"
+    "url": "https://github.com/C0SMlC/CookIT.git"
   },
-  "author": "Pratik Pendurkar, Yash Pokhriyal, Mohammad Faizan, Pratham Patil",
+  "author": "Pratik Pendurkar, Yash Pokhriyal",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/C0SMlC/CookIT/issues"

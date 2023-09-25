@@ -1,4 +1,14 @@
-.heading-tertiary {
+.heading-secondary {
   font-size: $font-size-xlarge;
   font-weight: $font-weight-bold;
+}
+
+.heading-tertiary {
+  font-size: $font-size-large;
+  font-weight: $font-weight-bold;
+}
+
+.footer__text {
+  font-size: $font-size-medium;
+  font-weight: $font-weight-small;
 }

@@ -1,4 +1,6 @@
 .categories {
+  overflow: scroll;
+  padding-bottom: 8.2rem;
   &__box {
     display: flex;
     gap: 2.2rem;
@@ -11,7 +13,7 @@
     align-items: center;
     justify-content: center;
     gap: 2.8rem;
-    width: 16.6%;
+    width: 30.5rem;
     padding: 2.6rem;
     background-color: $color-lime;
     border-radius: 3rem;
