@@ -7,23 +7,23 @@
 html {
   font-size: 62.5%;
 
-  //   @include respond(bigScreen) {
-  //     font-size: 70%;
-  //   }
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
 
-  //   @include respond(tabLand) {
-  //     font-size: 62.5%;
-  //   }
-  //   @include respond(tabPort) {
-  //     font-size: 56.25%;
-  //   }
-  //   @include respond(phone) {
-  //     font-size: 43.75%;
-  //   }
+  @include respond(tab-land) {
+    font-size: 48%;
+  }
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+  // @include respond(phone) {
+  //   font-size: 43.75%;
+  // }
 
-  //   @include respond(smallPhone) {
-  //     font-size: 35%;
-  //   }
+  // @include respond(smallPhone) {
+  //   font-size: 35%;
+  // }
 }
 
 body {

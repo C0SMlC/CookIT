@@ -16,9 +16,7 @@
     display: flex;
     justify-content: space-between;
     list-style-type: none;
-    position: absolute;
     width: 15%;
-    left: 15%;
     gap: 2.2rem;
   }
 
@@ -43,14 +41,13 @@
   }
 
   &__searchbox {
-    position: absolute;
-    left: 38%;
+    position: relative;
   }
 
   &__search {
     height: 5.2rem;
-    width: 500px;
-    border-radius: 50px;
+    width: 50rem;
+    border-radius: 5rem;
     border: none;
     background-color: #dedede;
   }
@@ -60,12 +57,15 @@
   }
 
   &__search-btn {
-    width: 20rem;
-    height: 6rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 30px;
+    border-radius: 5rem;
     position: absolute;
-    right: 15%;
+    top: -8%;
+    right: -5%;
     background: rgb(104, 29, 29);
     background: linear-gradient(
       130deg,
@@ -75,13 +75,5 @@
     color: $color-white;
     font-size: $font-size-medium;
     text-transform: uppercase;
-    position: relative;
-  }
-
-  &__search-icon {
-    display: inline-block;
-    position: absolute;
-    left: 10%;
-    top: 28%;
   }
 }

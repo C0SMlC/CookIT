@@ -1,9 +1,13 @@
 .header {
   display: flex;
-  height: 100vh;
+  height: 80vh;
   position: relative;
-  background-image: url('../img/header/header_main.png');
   background-size: cover;
+  background-image: url('../img/header/header_main.png');
+
+  @include respond(tab-land) {
+    width: 1200px;
+  }
 
   &__main-img {
     height: 80vh;
@@ -13,9 +17,8 @@
   &-box {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    left: 35%;
-    top: 28%;
+    align-items: center;
+    justify-content: center;
   }
 
   &-main {
