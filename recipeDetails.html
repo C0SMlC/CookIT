@@ -3,14 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>CookIT</title>
+    <title>Document</title>
   </head>
   <body>
     <div class="navigation">
@@ -82,7 +80,7 @@
         </a>
         <ul class="navigation__list">
           <li class="navigation__item">
-            <a href="#" class="navigation__link"> Home </a>
+            <a href="/index.html" class="navigation__link"> Home </a>
           </li>
           <li class="navigation__item">
             <a href="#" class="navigation__link"> Meal Planner </a>
@@ -198,114 +196,34 @@
         </ul>
       </nav>
     </div>
-    <header class="header">
-      <div class="header__logo-box">
-        <img
-          src="img/header/header_img1.png"
-          alt="Delicious Food"
-          class="header__main-img"
-        />
-      </div>
-      <div class="header-box">
-        <h1 class="header__text-box">
-          <span class="header-sub">MILLIONS OF RECIPES</span>
-          <br />
-          <span class="header-main"
-            >AT YOUR FINGERTIP<span class="header-main-span">.</span></span
-          >
-        </h1>
-        <div class="header__btn-box">
-          <a class="btn btn-header btn_red" href="#">Upload Your Recipes</a>
-          <a class="btn btn-header btn_red" href="/recipeDetails.html"
-            >Search For Recipes</a
-          >
+    <main class="main">
+      <h2 class="heading-secondary margin-bottom-2rem">Your search results.</h2>
+      <div class="main__container">
+        <div class="main__content">
+          <div class="main__img-box"></div>
+          <div class="main__description-box">
+            <h3 class="sub-heading sub-heading-main">
+              Chocolate Truffle Cake.
+            </h3>
+            <ul class="main__item-description-list">
+              <li class="main__item-description">
+                <span class="main__item-description-label"
+                  >Preparation Time:</span
+                >
+                <span class="main__item-description-span">10 mins</span>
+              </li>
+              <li class="main__item-description">
+                <span class="main__item-description-label"> Cook Time:</span>
+                <span class="main__item-description-span">10 mins</span>
+              </li>
+              <li class="main__item-description">
+                <span class="main__item-description-label">🥩</span>
+                <span class="main__item-description-span">Non Veg</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </header>
-    <section class="categories">
-      <h2 class="categories__title heading-tertiary">
-        Categories<span class="header-main-span">.</span>
-      </h2>
-      <div class="categories__box">
-        <div class="categories__item-box">
-          <img
-            src="./img/categories/category_1.png"
-            class="categories__item-img"
-          />
-
-          <h3 class="categories__item-heading">Breakfast</h3>
-        </div>
-        <div class="categories__item-box">
-          <img
-            src="./img/categories/category_1.png"
-            class="categories__item-img"
-          />
-          <h3 class="categories__item-heading">Breakfast</h3>
-        </div>
-        <div class="categories__item-box">
-          <img
-            src="./img/categories/category_1.png"
-            class="categories__item-img"
-          />
-          <h3 class="categories__item-heading">Breakfast</h3>
-        </div>
-        <div class="categories__item-box">
-          <img
-            src="./img/categories/category_1.png"
-            class="categories__item-img"
-          />
-          <h3 class="categories__item-heading">Breakfast</h3>
-        </div>
-        <div class="categories__item-box">
-          <img
-            src="./img/categories/category_1.png"
-            class="categories__item-img"
-          />
-          <h3 class="categories__item-heading">Breakfast</h3>
-        </div>
-        <div class="categories__item-box">
-          <img
-            src="./img/categories/category_1.png"
-            class="categories__item-img"
-          />
-          <h3 class="categories__item-heading">Breakfast</h3>
-        </div>
-      </div>
-    </section>
-    <section class="statistic">
-      <div class="statistic__item-box">
-        <p class="statistic__item-number">12K+</p>
-        <p class="statistic__item-title">User Recipes</p>
-      </div>
-      <div class="statistic__item-box">
-        <p class="statistic__item-number">125K+</p>
-        <p class="statistic__item-title">Shopping List Generated</p>
-      </div>
-      <div class="statistic__item-box">
-        <p class="statistic__item-number">125K+</p>
-        <p class="statistic__item-title">Recipes Uploaded</p>
-      </div>
-    </section>
-    <section class="footer">
-      <div class="footer__text_box">
-        <h2 class="footer__title heading-secondary">
-          Everyone can be a chef in their own kitchen
-        </h2>
-        <p class="footer__text">
-          Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqut enim ad minim
-        </p>
-      </div>
-      <div class="footer__img_box">
-        <img
-          class="footer__img"
-          src="./img/footer/image-footer-1.png"
-          alt="Cook great food at home"
-        />
-      </div>
-    </section>
-    <footer class="footer__copyright">
-      <p>&copy; 2023 CookIT. Powered by Hustlers</p>
-    </footer>
+    </main>
   </body>
 </html>
