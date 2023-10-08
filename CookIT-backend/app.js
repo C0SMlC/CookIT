@@ -73,6 +73,16 @@ app.use(xss());
 
 app.use(compression());
 
+app.get('/', (req, res) => {
+  res.status(200).render('LandingPage', {
+    title: 'Home',
+  });
+});
+app.get('/recipe', (req, res) => {
+  res.status(200).render('LandingPage', {
+    title: 'recipe',
+  });
+});
 app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {

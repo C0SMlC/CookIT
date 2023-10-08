@@ -4,7 +4,7 @@
   "description": "Cookit is your go-to culinary companion, offering a treasure trove of recipes to explore. With our intuitive meal planner, you can effortlessly map out your week's meals, and our handy ingredient list feature makes shopping a breeze. Say goodbye to kitchen chaos and hello to stress-free cooking with Cookit",
   "main": "index.js",
   "scripts": {
-    "dev": "node-sass sass/main.scss css/style.css -w"
+    "dev": "node-sass sass/main.scss CookIT-backend/public/css/style.css -w"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,58 @@
+extends base
+
+block content 
+    header.header
+        .header__logo-box
+            img.header__main-img(src='img/header/header_img1.png' alt='Delicious Food')
+        .header-box
+            h1.header__text-box
+                span.header-sub MILLIONS OF RECIPES
+                br
+                span.header-main
+                    | AT YOUR FINGERTIP
+                    span.header-main-span .
+            .header__btn-box
+                a.btn.btn-header.btn_red(href='#') Upload Your Recipes
+                a.btn.btn-header.btn_red(href='/recipe') Search For Recipes
+    section.categories
+        h2.categories__title.heading-tertiary
+            | Categories
+            span.header-main-span .
+        .categories__box
+            .categories__item-box
+                img.categories__item-img(src='./img/categories/category_1.png')
+                h3.categories__item-heading Breakfast
+            .categories__item-box
+                img.categories__item-img(src='./img/categories/category_1.png')
+                h3.categories__item-heading Breakfast
+            .categories__item-box
+                img.categories__item-img(src='./img/categories/category_1.png')
+                h3.categories__item-heading Breakfast
+            .categories__item-box
+                img.categories__item-img(src='./img/categories/category_1.png')
+                h3.categories__item-heading Breakfast
+            .categories__item-box
+                img.categories__item-img(src='./img/categories/category_1.png')
+                h3.categories__item-heading Breakfast
+            .categories__item-box
+                img.categories__item-img(src='./img/categories/category_1.png')
+                h3.categories__item-heading Breakfast
+    section.statistic
+        .statistic__item-box
+            p.statistic__item-number 12K+
+            p.statistic__item-title User Recipes
+        .statistic__item-box
+            p.statistic__item-number 125K+
+            p.statistic__item-title Shopping List Generated
+        .statistic__item-box
+            p.statistic__item-number 125K+
+            p.statistic__item-title Recipes Uploaded
+    section.footer
+        .footer__text_box
+            h2.footer__title.heading-secondary
+                | Everyone can be a chef in their own kitchen
+            p.footer__text
+                | Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod
+                | tempor incididunt ut labore et dolore magna aliqut enim ad minim
+        .footer__img_box
+            img.footer__img(src='./img/footer/image-footer-1.png' alt='Cook great food at home')
