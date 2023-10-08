@@ -1,0 +1,50 @@
+.recipe {
+  &__img {
+    background-position: center;
+    background-size: cover;
+    border-radius: 1.5rem;
+  }
+
+  &__title {
+    grid-column: span 2;
+    justify-self: center;
+  }
+  &__nutrition {
+    display: flex;
+    justify-content: space-between;
+    &-list {
+      padding: 4rem 4rem;
+      border-radius: 2.5rem;
+      list-style: none;
+      background-color: $color-white;
+      line-height: 5rem;
+    }
+  }
+  &__ingredient {
+    font-size: $font-size-medium;
+  }
+  &__ingredients {
+    grid-column: span 2;
+    margin-top: 4.4rem;
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(4, 0.15fr);
+      justify-items: center;
+      justify-content: center;
+      column-gap: 0.2rem;
+      row-gap: 2.5rem;
+      list-style: none;
+    }
+  }
+
+  .recipe__instruction {
+    background-color: $color-white;
+    border-radius: 1.2rem;
+    padding: 4rem 3rem;
+    &-text {
+      font-size: $font-size-small;
+      font-weight: $font-weight-medium;
+    }
+  }
+}

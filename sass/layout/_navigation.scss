@@ -45,35 +45,28 @@
   }
 
   &__search {
-    height: 5.2rem;
+    height: 4.2rem;
     width: 50rem;
     border-radius: 5rem;
     border: none;
+    padding-left: 2rem;
     background-color: #dedede;
+    font-size: $font-size-xsmall;
   }
-  &__search::placeholder {
-    position: absolute;
-    left: 10%;
+
+  &__search:focus {
+    padding-left: 2rem;
+    color: #333;
+    border: 2px solid #333;
   }
 
   &__search-btn {
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 5rem;
     position: absolute;
-    top: -8%;
+    top: -4%;
     right: -5%;
-    background: rgb(104, 29, 29);
-    background: linear-gradient(
-      130deg,
-      rgba(104, 29, 29, 1) 0%,
-      rgba(210, 42, 21, 1) 77%
-    );
-    color: $color-white;
-    font-size: $font-size-medium;
     text-transform: uppercase;
   }
 }

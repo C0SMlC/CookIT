@@ -88,7 +88,7 @@
         </ul>
         <div class="navigation__searchbox">
           <input type="text" class="navigation__search" placeholder="Search" />
-          <button class="navigation__search-btn">
+          <button class="navigation__search-btn btn-primary">
             <span class="navigation__search-icon">
               <svg
                 width="23"
@@ -196,11 +196,86 @@
         </ul>
       </nav>
     </div>
-    <main>
-      <div class="recipe__title">
-        <h1>Recipe Title</h1>
-        <div class="recipe__img"></div>
-        
+    <main class="recipe">
+      <div class="recipe__details">
+        <h1 class="recipe__title heading-secondary padding-top-2rem">
+          Chicken Burger
+        </h1>
+        <img
+          class="recipe__img"
+          src="img/recipeDetails/chicken-burger.jpg"
+          alt="Chicken Burger"
+        />
+        <div class="recipe__nutrition-container">
+          <h3 class="heading-tertiary padding-bottom-2rem">
+            Nutrition Information
+          </h3>
+          <ul
+            class="recipe__nutrition-list padding-bottom-2rem margin-bottom-2rem"
+          >
+            <li class="recipe__nutrition">
+              <span class="recipe__nutrition-label">Calories</span>
+              <span><span class="recipe__nutrition-value">100</span>Kcal</span>
+            </li>
+            <li class="recipe__nutrition">
+              <span class="recipe__nutrition-label">Carbs</span>
+              <span><span class="recipe__nutrition-value">100</span>G</span>
+            </li>
+            <li class="recipe__nutrition">
+              <span class="recipe__nutrition-label">Proteins</span>
+              <span><span class="recipe__nutrition-value">100</span>G</span>
+            </li>
+            <li class="recipe__nutrition">
+              <span class="recipe__nutrition-label">Fats</span>
+              <span><span class="recipe__nutrition-value">100</span>G</span>
+            </li>
+          </ul>
+          <button class="btn-primary">Add To Meal Planner</button>
+          <button class="btn-primary">Bookmark</button>
+        </div>
+        <div class="recipe__ingredients">
+          <div class="center-text">
+            <h3 class="heading-tertiary padding-bottom-2rem">Ingredients</h3>
+          </div>
+          <ul class="recipe__ingredients-list margin-top-5rem">
+            <li class="recipe__ingredient">
+              <span class="recipe__ingredient-amount">1</span>
+              <span class="recipe__ingredient-name">Buns</span>
+            </li>
+            <li class="recipe__ingredient">
+              <span class="recipe__ingredient-amount">1</span>
+              <span class="recipe__ingredient-name">Meat</span>
+            </li>
+            <li class="recipe__ingredient">
+              <span class="recipe__ingredient-amount">1</span>
+              <span class="recipe__ingredient-name">Meat</span>
+            </li>
+            <li class="recipe__ingredient">
+              <span class="recipe__ingredient-amount">1</span>
+              <span class="recipe__ingredient-name">Meat</span>
+            </li>
+            <li class="recipe__ingredient">
+              <span class="recipe__ingredient-amount">1</span>
+              <span class="recipe__ingredient-name">Meat</span>
+            </li>
+          </ul>
+          <div class="center-text margin-top-5rem">
+            <button class="btn-primary recipe__ingredient-btn">
+              Add to shopping list
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="recipe__instruction margin-5rem">
+        <div class="center-text">
+          <h3 class="heading-tertiary margin-bottom-2rem">HOW TO COOK IT</h3>
+          <p class="recipe__instruction-text">
+            This recipe was carefully designed and tested by
+            <span class="recipe__instruction-author">Closet Cooking</span>.
+            Please check out directions at their website.
+          </p>
+          <a class="btn-primary margin-top-5rem" href="#">Directions</a>
+        </div>
       </div>
     </main>
   </body>

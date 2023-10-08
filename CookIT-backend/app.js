@@ -17,11 +17,11 @@ const errorController = require('./controller/errorController');
 const app = express();
 
 // To tell express which template engine to use
-// app.set('view engine', 'pug');
+app.set('view engine', 'pug');
 // path join will automatically join to the views from the views folder
-// app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 // Serving static files, to view static files such as images on server
-// app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`${__dirname}/public`));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // enable cors
