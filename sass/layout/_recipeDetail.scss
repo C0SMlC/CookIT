@@ -26,15 +26,17 @@
   &__ingredients {
     grid-column: span 2;
     margin-top: 4.4rem;
+    text-align: center;
 
     &-list {
-      display: grid;
-      grid-template-columns: repeat(4, 0.15fr);
-      justify-items: center;
-      justify-content: center;
-      column-gap: 0.2rem;
-      row-gap: 2.5rem;
+      display: inline-flex;
+      background-color: $color-white;
       list-style: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 6rem 4rem;
+      line-height: 4.5rem;
+      border-radius: 1.5rem;
     }
   }
 

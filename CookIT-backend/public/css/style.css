@@ -76,6 +76,10 @@ body {
 .margin-5rem {
   margin: 8rem 0 3rem 0; }
 
+.btn-margin {
+  display: flex;
+  gap: 2.2rem; }
+
 .btn-header {
   padding: 1.8rem 3.6rem;
   border-radius: 50px; }
@@ -95,26 +99,35 @@ body {
   padding: 1rem 2rem;
   border: none;
   border-radius: 5rem;
+  cursor: pointer;
   background: #681d1d;
   background: linear-gradient(130deg, #681d1d 0%, #d22a15 77%);
   color: #ffffff;
   font-size: 2.2rem; }
 
+.main__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); }
+
 .main__content {
-  display: inline-block;
-  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+  max-width: 300px;
   cursor: pointer; }
 
 .main__img-box {
-  background-image: url("../img/recipeDetails/recipeItem.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
   width: 100%;
-  height: 300px; }
+  height: 25rem;
+  object-fit: cover; }
 
 .main__description-box {
-  padding: 2.5rem 1.5rem; }
+  width: 100%;
+  min-height: 10rem;
+  padding: 2.5rem 1.5rem;
+  background-color: #ffffff; }
 
 .main__item-description-list {
   list-style: none;
@@ -124,10 +137,17 @@ body {
 .main__item-description {
   display: flex;
   flex-direction: column;
-  text-align: center; }
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700; }
   .main__item-description-label {
     font-size: 1.2rem;
     font-weight: 600; }
+
+.sub-heading-main {
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis; }
 
 .header {
   display: flex;
@@ -325,15 +345,17 @@ body {
 
 .recipe__ingredients {
   grid-column: span 2;
-  margin-top: 4.4rem; }
+  margin-top: 4.4rem;
+  text-align: center; }
   .recipe__ingredients-list {
-    display: grid;
-    grid-template-columns: repeat(4, 0.15fr);
-    justify-items: center;
-    justify-content: center;
-    column-gap: 0.2rem;
-    row-gap: 2.5rem;
-    list-style: none; }
+    display: inline-flex;
+    background-color: #ffffff;
+    list-style: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 6rem 4rem;
+    line-height: 4.5rem;
+    border-radius: 1.5rem; }
 
 .recipe .recipe__instruction {
   background-color: #ffffff;

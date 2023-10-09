@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
 
+const viewRouter = require('./routes/viewRouter');
 const userRouter = require('./routes/userRouter');
 const AppError = require('./utils/AppError');
 const errorController = require('./controller/errorController');
@@ -73,17 +74,9 @@ app.use(xss());
 
 app.use(compression());
 
-app.get('/', (req, res) => {
-  res.status(200).render('LandingPage', {
-    title: 'Home',
-  });
-});
-app.get('/recipe', (req, res) => {
-  res.status(200).render('LandingPage', {
-    title: 'recipe',
-  });
-});
-app.use('/api/v1/users', userRouter);
+app.use('/', viewRouter);
+
+app.use('/users', userRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can not find ${req.originalUrl} on this server`, 404));

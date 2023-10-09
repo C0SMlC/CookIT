@@ -1,0 +1,25 @@
+extends base
+
+block content 
+    main.main
+        h2.heading-secondary.margin-bottom-2rem #{countRecipes} search results.
+        .main__container
+            each recipe in recipes
+                .main__content(data-recipe-id=`${recipe.id}`)
+                    img.main__img-box(src=`${recipe.image_url}` alt=`${recipe.title}`)
+                    .main__description-box
+                        h3.sub-heading.sub-heading-main
+                            |#{recipe.title}
+                        .main__item-description
+                            p Publisher: #{recipe.publisher}
+                        //- ul.main__item-description-list
+                        //-     li.main__item-description
+                        //-         span.main__item-description-label Preparation Time:
+                        //-         span.main__item-description-span 10 mins
+                        //-     li.main__item-description
+                        //-         span.main__item-description-label  Cook Time:
+                        //-         span.main__item-description-span 10 mins
+                        //-     li.main__item-description
+                        //-         span.main__item-description-label &#x1F969;
+                        //-         span.main__item-description-span Non Veg
+

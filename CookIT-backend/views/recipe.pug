@@ -1,4 +1,53 @@
 extends base
 
 block content 
-    <h1> This is recipe page
+    main.recipe
+        .recipe__details
+            h1.recipe__title.heading-secondary.padding-top-2rem
+                | #{recipe.title}
+            img.recipe__img(src=`${recipe.image_url}` alt='Chicken Burger')
+            .recipe__nutrition-container
+                h3.heading-tertiary.padding-bottom-2rem
+                    | Nutrition Information
+                ul.recipe__nutrition-list.padding-bottom-2rem.margin-bottom-2rem
+                    li.recipe__nutrition
+                        span.recipe__nutrition-label Calories
+                        span
+                            span.recipe__nutrition-value 100
+                            | Kcal
+                    li.recipe__nutrition
+                        span.recipe__nutrition-label Carbs
+                        span
+                            span.recipe__nutrition-value 100
+                            | G
+                    li.recipe__nutrition
+                        span.recipe__nutrition-label Proteins
+                        span
+                            span.recipe__nutrition-value 100
+                            | G
+                    li.recipe__nutrition
+                        span.recipe__nutrition-label Fats
+                        span
+                            span.recipe__nutrition-value 100
+                .btn-margin            | G
+                    button.btn-primary Add To Meal Planner
+                    button.btn-primary Bookmark
+            .recipe__ingredients
+                .center-text
+                    h3.heading-tertiary.padding-bottom-2rem Ingredients
+                ul.recipe__ingredients-list.margin-top-5rem
+                    for ingredient in recipe.ingredients
+                        li.recipe__ingredient
+                            span #{ingredient.quantity} #{ingredient.unit} #{ingredient.description}
+                .center-text.margin-top-5rem
+                    button.btn-primary.recipe__ingredient-btn
+                        | Add to shopping list
+        .recipe__instruction.margin-5rem
+            .center-text
+                h3.heading-tertiary.margin-bottom-2rem HOW TO COOK IT
+                p.recipe__instruction-text
+                    | This recipe was carefully designed and tested by 
+                    span.recipe__instruction-author  #{recipe.publisher}
+                    | .
+                    |             Please check out directions at their website.
+                a.btn-primary.margin-top-5rem(href=`${recipe.source_url}` target='_blank') Directions
