@@ -1,29 +1,89 @@
-require("axios");
+const path = require('path');
+const express = require('express');
+const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+// const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
+const compression = require('compression');
+const cors = require('cors');
 
-/*eslint-disable */ 
-"use strict";
-document.querySelector(".navigation__search-btn").addEventListener("click", (e)=>{
-    const inputField = document.getElementById("searchInput");
-    const searchTerm = inputField.value.trim();
-    if (searchTerm === "") alert("Please enter a search term.");
-    else window.setTimeout(()=>{
-        location.assign("/recipes/" + searchTerm);
-    }, 500);
-});
-document.querySelector(".main__container").addEventListener("click", function(e) {
-    let mainContent;
-    if (e.target.classList.contains("main__content")) mainContent = e.target;
-    else if (e.target.parentElement.classList.contains("main__content")) mainContent = e.target.parentElement;
-    if (mainContent) {
-        const recipeId = mainContent.dataset.recipeId;
-        window.setTimeout(()=>{
-            location.assign("/recipe/" + recipeId);
-        }, 500);
-    }
-});
-document.querySelector(".recipe__ingredient-btn").addEventListener("click", (e)=>{
-    window.setTimeout(()=>{});
+const viewRouter = require('./routes/viewRouter');
+const userRouter = require('./routes/userRouter');
+const ingredientRouter = require('./routes/IngredientRouter');
+const AppError = require('./utils/AppError');
+const errorController = require('./controller/errorController');
+
+const app = express();
+
+// To tell express which template engine to use
+app.set('view engine', 'pug');
+// path join will automatically join to the views from the views folder
+app.set('views', path.join(__dirname, 'views'));
+// Serving static files, to view static files such as images on server
+app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// enable cors
+app.use(cors());
+app.options('*', cors());
+
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+  })
+);
+
+if (process.env.NODE_ENV !== 'production') {
+  //Logging request details to console
+  app.use(morgan('dev'));
+}
+
+// Too many requests
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP! Please try again later.',
 });
 
+app.use('/api', limiter);
 
-//# sourceMappingURL=app.js.map
+// body parser
+app.use(
+  express.json({
+    limit: '10kb',
+  })
+);
+
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+
+// Data sanitisation against NOSQL query injection
+// {
+//     "email":{"$gt":""},
+//     "password":"aaaaaaaaaaaa"
+// }
+app.use(mongoSanitize());
+
+// Data sanitize gainst xss i.e malicious html code included with js
+// Cross-Site Scripting
+app.use(xss());
+
+app.use(compression());
+
+app.use('/', viewRouter);
+
+app.use('/users', userRouter);
+app.use('/ingredients', ingredientRouter);
+
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can not find ${req.originalUrl} on this server`, 404));
+});
+
+app.use(errorController);
+
+module.exports = app;

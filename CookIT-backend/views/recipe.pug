@@ -1,7 +1,7 @@
 extends base
 
 block content 
-    main.recipe(data-recipe-id=`${recipe.id}`)
+    main.recipe(data-recipe=`${JSON.stringify(recipe)}`)
         .recipe__details
             h1.recipe__title.heading-secondary.padding-top-2rem
                 | #{recipe.title}
