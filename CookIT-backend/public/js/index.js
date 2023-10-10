@@ -3,6 +3,23 @@
 
 import { addIngredients } from './addIngredients.js';
 
+// window.addEventListener('load', () => {
+//   const ingredientButton = document.querySelector('.recipe__ingredient-btn');
+
+//   if (!ingredientButton) {
+//     console.error('Button not found.');
+//     return;
+//   }
+
+//   const isInShoppingList = localStorage.getItem('recipeInShoppingList');
+
+//   if (isInShoppingList === 'true') {
+//     ingredientButton.textContent = 'Already in Shopping List';
+//     ingredientButton.classList.add('disabled');
+//     ingredientButton.disabled = true;
+//   }
+// });
+
 if (document.querySelector('.navigation__search-btn')) {
   document
     .querySelector('.navigation__search-btn')
