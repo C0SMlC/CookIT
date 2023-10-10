@@ -11,7 +11,7 @@
     "debug": "ndb server.js",
     "build": "webpack",
     "watch": "webpack --watch",
-    "watch:js": "parcel watch ./public/js/index.js --dist-dir ./public/js",
+    "watch:js": "parcel watch views/base.pug --out-dir public",
     "build:js": "parcel build ./public/js/index.js --dist-dir ./public/js"
   },
   "author": "",
@@ -45,6 +45,8 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.22.20",
     "concurrently": "^8.2.0",
     "eslint": "^8.43.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -54,6 +56,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.5",
     "prettier": "^2.8.8",
     "pug": "^3.0.2",
     "webpack": "^5.88.2",

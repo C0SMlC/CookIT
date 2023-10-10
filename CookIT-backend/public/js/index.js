@@ -1,6 +1,8 @@
 /*eslint-disable */
 'use strict';
 
+// import axios from 'axios';
+
 document
   .querySelector('.navigation__search-btn')
   .addEventListener('click', (e) => {
@@ -14,16 +16,6 @@ document
       }, 500);
     }
   });
-
-// const parentElement = document.querySelector('.main__container');
-
-// parentElement.addEventListener('click', (event) => {
-//   if (event.target.classList.contains('main__content')) {
-//     const clickedContainer = event.target;
-//     const recipeId = clickedContainer.dataset.recipeId;
-
-//   }
-// });
 
 document
   .querySelector('.main__container')
@@ -40,4 +32,10 @@ document
         location.assign('/recipe/' + recipeId);
       }, 500);
     }
+  });
+
+document
+  .querySelector('.recipe__ingredient-btn')
+  .addEventListener('click', (e) => {
+    window.setTimeout(() => {});
   });
