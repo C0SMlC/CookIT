@@ -457,7 +457,7 @@ body {
 .recipe__details {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  align-items: stretch;
   row-gap: 6.4rem;
   column-gap: 2.2rem;
+  justify-items: center;
 }

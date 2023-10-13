@@ -77,12 +77,8 @@ app.use(compression());
 
 app.use('/', viewRouter);
 
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/ingredients', ingredientRouter);
-
-app.use('*', (req, res, next) => {
-  next(new AppError(`Can not find ${req.originalUrl} on this server`, 404));
-});
+app.use('/users', userRouter);
+app.use('/ingredients', ingredientRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can not find ${req.originalUrl} on this server`, 404));
