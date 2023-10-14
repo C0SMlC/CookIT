@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.route('/').post(ingredientController.addIngredient);
 
+router.route('/').delete(ingredientController.deleteIngredient);
+
 router.route('/').get(ingredientController.getAllIngredients);
 
 router

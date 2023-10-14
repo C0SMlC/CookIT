@@ -1,19 +1,28 @@
-import { Flex, Button, ButtonGroup } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Box, Flex, Link, HStack, Image } from "@chakra-ui/react";
 
-function Navigation() {
+const Navigation = () => {
   return (
-    <Flex justify="center" align="center" h="60px" bg="blue.500" color="white">
-      <ButtonGroup spacing={4}>
-        <a to="/">
-          <Button variant="outline">Home</Button>
-        </a>
-        <a to="/meal-planner">
-          <Button variant="outline">Meal Planner</Button>
-        </a>
-      </ButtonGroup>
-    </Flex>
+    <Box as="nav" p="3" boxShadow="lg" pl={"10rem"} pr={"10rem"}>
+      <Flex justify="space-between" align="center">
+        <Box>
+          <a href="/index.html">
+            <Image
+              src="./src/assets/logo.png"
+              alt="CookIT Logo"
+              width="100px"
+            />
+          </a>
+        </Box>
+
+        <Box as="nav">
+          <HStack spacing={"50px"} fontWeight={"bold"} fontSize={"2xl"}>
+            <Link>Search Recipes</Link>
+            <Link>Meal Planner</Link>
+          </HStack>
+        </Box>
+      </Flex>
+    </Box>
   );
-}
+};
 
 export default Navigation;

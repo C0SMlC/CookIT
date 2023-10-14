@@ -1,12 +1,15 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
 import RecipeDetails from "./components/RecipeDetails";
-import Navigation from "./components/NavBar";
 
 function App() {
   return (
-    <>
-      <Navigation />
-      <RecipeDetails />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RecipeDetails />} />
+        <Route path="*" element={<h1>Page Not Found</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

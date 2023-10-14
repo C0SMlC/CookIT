@@ -7,6 +7,7 @@ const addIngredient = catchAsync(async (req, res, next) => {
   const newIngredient = await Ingredient.create({
     recipeName: req.body.recipeName,
     recipeId: req.body.recipeId,
+    imageUrl: req.body.imageUrl,
     ingredientName: req.body.ingredientName,
     quantity: req.body.quantity,
   });
@@ -15,6 +16,30 @@ const addIngredient = catchAsync(async (req, res, next) => {
     data: {
       newIngredient,
     },
+  });
+});
+
+const deleteIngredient = catchAsync(async (req, res, next) => {
+  const { recipeId } = req.body;
+
+  if (!recipeId) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Please provide a recipeId to delete ingredients.',
+    });
+  }
+
+  const result = await Ingredient.deleteMany({ recipeId: recipeId });
+
+  if (result.deletedCount > 0) {
+    return res.status(200).json({
+      status: 'success',
+      message: 'Ingredients deleted successfully.',
+    });
+  }
+  return res.status(404).json({
+    status: 'fail',
+    message: 'No ingredients found for the provided recipeId.',
   });
 });
 
@@ -46,7 +71,11 @@ const getUniqueRecipes = catchAsync(async (req, res, next) => {
   const recipes = await Ingredient.aggregate([
     {
       $group: {
-        _id: { recipeId: '$recipeId', recipeName: '$recipeName' },
+        _id: {
+          recipeId: '$recipeId',
+          recipeName: '$recipeName',
+          imageUrl: '$imageUrl',
+        },
       },
     },
     {
@@ -54,6 +83,7 @@ const getUniqueRecipes = catchAsync(async (req, res, next) => {
         _id: 0,
         recipeId: '$_id.recipeId',
         recipeName: '$_id.recipeName',
+        imageUrl: '$_id.imageUrl',
       },
     },
   ]);
@@ -62,6 +92,7 @@ const getUniqueRecipes = catchAsync(async (req, res, next) => {
 
 module.exports = {
   addIngredient,
+  deleteIngredient,
   getRecipeIngredients,
   getAllIngredients,
   getUniqueRecipes,

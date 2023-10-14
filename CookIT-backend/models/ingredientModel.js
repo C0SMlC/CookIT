@@ -9,6 +9,10 @@ const ingredientSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
   ingredientName: {
     type: String,
     required: true,

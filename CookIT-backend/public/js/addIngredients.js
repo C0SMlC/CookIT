@@ -10,10 +10,12 @@ export const addIngredients = async (recipe) => {
 
   ingredientButton.textContent = 'Processing...';
   ingredientButton.disabled = true;
+  console.log(recipe);
 
   try {
     const recipeName = recipe.title;
     const recipeId = recipe.id;
+    const imageUrl = recipe.image_url;
 
     for (const ingredient of recipe.ingredients) {
       await axios({
@@ -22,6 +24,7 @@ export const addIngredients = async (recipe) => {
         data: {
           recipeName,
           recipeId,
+          imageUrl,
           ingredientName: ingredient.description,
           quantity: ingredient.quantity,
         },
@@ -29,7 +32,7 @@ export const addIngredients = async (recipe) => {
     }
 
     ingredientButton.textContent = 'Done 👍';
-    // ingredientButton.classList.add('disabled');
+    ingredientButton.classList.add('disabled');
     // localStorage.setItem('recipeInShoppingList', 'recipeId');
   } catch (error) {
     console.error(error.response.data.message);
