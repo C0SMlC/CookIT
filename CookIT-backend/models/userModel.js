@@ -31,6 +31,20 @@ const userSchema = new mongoose.Schema({
       message: 'password does not match',
     },
   },
+
+  passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
+});
+
+userSchema.pre(/^find/, function (next) {
+  this.find({ active: { $ne: false } });
+  next();
 });
 
 userSchema.pre('save', async function (next) {
@@ -39,12 +53,24 @@ userSchema.pre('save', async function (next) {
   this.confirmPassword = undefined;
   next();
 });
-// instance method can e called on documents
 userSchema.methods.correctPassword = async function (
   enteredPassword,
   savedPassword
 ) {
   return await bcrypt.compare(enteredPassword, savedPassword);
+};
+
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+
+    return JWTTimestamp < changedTimestamp;
+  }
+
+  return false;
 };
 
 const User = mongoose.model('Users', userSchema);

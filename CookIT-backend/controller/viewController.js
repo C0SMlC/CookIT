@@ -1,4 +1,4 @@
-const request = require('request');
+const request = require('request-promise');
 const catchAsync = require('../utils/catchAsync');
 
 const getLandingPage = (req, res) => {
@@ -7,42 +7,44 @@ const getLandingPage = (req, res) => {
   });
 };
 
-// const getRecipePage = (req, res) => {
-//   res.status(200).render('recipes', {
-//     title: 'Home',
-//   });
-// };
-
-const getRecipePage = catchAsync((req, res) => {
+const getRecipePage = catchAsync(async (req, res, next) => {
   const { slug } = req.params;
   const apiUrl = `https://forkify-api.herokuapp.com/api/v2/recipes?search=${slug}&key=${process.env.FORKIFY_API_KEY}`;
 
-  request(apiUrl, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      const data = JSON.parse(body);
-      // Render a new Pug template with the data and display it
-      res.status(200).render('recipes', {
-        title: 'Search For Recipes',
-        countRecipes: data.results,
-        recipes: data.data.recipes,
-      });
-    }
-  });
+  try {
+    const data = await request(apiUrl);
+    const parsedData = JSON.parse(data);
+
+    res.status(200).render('recipes', {
+      title: 'Search For Recipes',
+      countRecipes: parsedData.results,
+      recipes: parsedData.data.recipes,
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
-const getRecipe = catchAsync((req, res) => {
+const getRecipe = catchAsync(async (req, res, next) => {
   const { slug } = req.params;
   const apiUrl = `https://forkify-api.herokuapp.com/api/v2/recipes/${slug}`;
 
-  request(apiUrl, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      const data = JSON.parse(body);
-      // Render a new Pug template with the data and display it
-      res.status(200).render('recipe', {
-        title: data.data.recipe.title,
-        recipe: data.data.recipe,
-      });
-    }
+  try {
+    const data = await request(apiUrl);
+    const parsedData = JSON.parse(data);
+
+    res.status(200).render('recipe', {
+      title: parsedData.data.recipe.title,
+      recipe: parsedData.data.recipe,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+const getLoginForm = catchAsync(async (req, res, next) => {
+  res.status(200).render('login', {
+    title: 'Log In',
   });
 });
 
@@ -50,4 +52,5 @@ module.exports = {
   getLandingPage,
   getRecipe,
   getRecipePage,
+  getLoginForm,
 };

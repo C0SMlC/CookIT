@@ -29,9 +29,13 @@ block content
                         span.recipe__nutrition-label Fats
                         span
                             span.recipe__nutrition-value 100
-                .btn-margin        
-                    button.btn-primary Add To Meal Planner
-                    button.btn-primary Bookmark
+                if user            
+                    .btn-margin        
+                        button.btn-primary Add To Meal Planner
+                        button.btn-primary Bookmark
+                else 
+                    .center-text
+                        a.linkText(href='/') Log in to add to meal planner
             .recipe__ingredients
                 .center-text
                     h3.heading-tertiary.padding-bottom-2rem Ingredients
@@ -40,8 +44,11 @@ block content
                         li.recipe__ingredient
                             span #{ingredient.quantity} #{ingredient.unit} #{ingredient.description}
                 .center-text.margin-top-5rem
-                    button.btn-primary.recipe__ingredient-btn
-                        | Add to shopping list
+                    if user
+                        button.btn-primary.recipe__ingredient-btn
+                            | Add to shopping list
+                    else
+                        a.linkText Log In to add to shopping list
         .recipe__instruction.margin-5rem
             .center-text
                 h3.heading-tertiary.margin-bottom-2rem HOW TO COOK IT

@@ -1,8 +1,11 @@
 const express = require('express');
 
 const ingredientController = require('../controller/ingredientController');
+// const authController = require('../controller/authController');
 
 const router = express.Router();
+
+// router.use(authController.protect);
 
 router.route('/').post(ingredientController.addIngredient);
 

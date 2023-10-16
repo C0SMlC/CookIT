@@ -2,6 +2,7 @@
 'use strict';
 
 import { addIngredients } from './addIngredients.js';
+import { login } from './login.js';
 
 // window.addEventListener('load', () => {
 //   const ingredientButton = document.querySelector('.recipe__ingredient-btn');
@@ -19,6 +20,17 @@ import { addIngredients } from './addIngredients.js';
 //     ingredientButton.disabled = true;
 //   }
 // });
+
+if (document.querySelector('.form--login')) {
+  const loginBtn = document
+    .querySelector('.form--login')
+    .addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.querySelector('#email').value;
+      const password = document.querySelector('#password').value;
+      login(email, password);
+    });
+}
 
 if (document.querySelector('.navigation__search-btn')) {
   document
