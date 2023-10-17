@@ -404,14 +404,32 @@ body {
   background-position: center;
   background-size: cover;
   border-radius: 1.5rem;
-} */
+}
+
 .recipe__img {
-  width: 100%; /* Full width of the container */
-  max-height: 50rem; /* Maintain aspect ratio */
-  object-fit: contain; /* Scale and crop the image to cover the entire container */
+  width: 100%; 
+  max-height: 50rem; 
+  object-fit: contain; 
   background-position: center;
   background-size: contain;
   border-radius: 1.5rem;
+ */
+
+.recipe__img-wrapper {
+  width: 80%;
+  height: 0;
+  padding-bottom: 50%; /* This would ensure 2:1 aspect ratio (width:height) if that's what you require */
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.recipe__img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover; /* It's similar to background-size: cover; */
+  object-position: center; /* It's similar to background-position: center; */
 }
 
 .recipe__title {

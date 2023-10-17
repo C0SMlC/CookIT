@@ -5,7 +5,8 @@ block content
         .recipe__details
             h1.recipe__title.heading-secondary.padding-top-2rem
                 | #{recipe.title}
-            img.recipe__img(src=`${recipe.image_url}` alt='Chicken Burger')
+            .recipe__img-wrapper    
+                img.recipe__img(src=`${recipe.image_url}` alt='Chicken Burger')
             .recipe__nutrition-container
                 h3.heading-tertiary.padding-bottom-2rem
                     | Nutrition Information

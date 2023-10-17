@@ -1,25 +1,22 @@
-import { useEffect } from "react";
 import PropTypes from "prop-types";
+import { Checkbox } from "@chakra-ui/react";
 
-function Ingredient({ recipeId }) {
- // Include recipeId as a dependency
-
-  // Add a conditional rendering based on the ingredient's length
-  if (ingredient.length === 0) {
-    return <div>Loading...</div>;
-  }
-
+function Ingredient({ ingredient }) {
   return (
     <div>
       {ingredient.map((ingredientItem) => (
-        <div key={ingredientItem._id}>{ingredientItem.ingredientName}</div>
+        <div key={ingredientItem._id}>
+          <Checkbox colorScheme="green">
+            {ingredientItem.ingredientName}
+          </Checkbox>
+        </div>
       ))}
     </div>
   );
 }
 
 Ingredient.propTypes = {
-  recipeId: PropTypes.string.isRequired,
+  ingredient: PropTypes.array.isRequired,
 };
 
 export default Ingredient;

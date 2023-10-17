@@ -26,9 +26,28 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(`${__dirname}/public`));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// enable cors
-app.use(cors());
-app.options('*', cors());
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
+// const corsOptions = {
+//   origin: '*', // Allow requests from all origins
+//   credentials: true, // Allow credentials (cookies) to be sent
+// };
+
+app.use(cors(corsOptions));
 
 app.use(
   helmet({
@@ -75,7 +94,7 @@ app.use(xss());
 
 app.use(compression());
 
-app.use('/', viewRouter);
+app.use('/app', viewRouter);
 
 app.use('/users', userRouter);
 app.use('/ingredients', ingredientRouter);

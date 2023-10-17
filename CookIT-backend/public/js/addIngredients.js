@@ -35,6 +35,8 @@ export const addIngredients = async (recipe) => {
     ingredientButton.classList.add('disabled');
     // localStorage.setItem('recipeInShoppingList', 'recipeId');
   } catch (error) {
+    ingredientButton.textContent = 'Ingredients already in shopping list';
+    ingredientButton.classList.add('disabled');
     console.error(error);
   }
 };

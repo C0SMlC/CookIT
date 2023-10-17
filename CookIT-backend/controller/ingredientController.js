@@ -10,6 +10,7 @@ const addIngredient = catchAsync(async (req, res, next) => {
     imageUrl: req.body.imageUrl,
     ingredientName: req.body.ingredientName,
     quantity: req.body.quantity,
+    userId: req.body.userId,
   });
   res.status(201).json({
     status: 'success',
@@ -57,7 +58,7 @@ const getAllIngredients = catchAsync(async (req, res, next) => {
 const getRecipeIngredients = catchAsync(async (req, res, next) => {
   const recipe = await Ingredient.find({
     recipeId: req.params.recipeId,
-  }).select('ingredientName quantity -_id');
+  }).select('ingredientName quantity _id');
   res.status(200).json({
     status: 'success',
     data: {

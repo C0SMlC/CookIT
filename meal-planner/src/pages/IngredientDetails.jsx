@@ -34,7 +34,7 @@ function IngredientDetails() {
   }, [recipeId]);
   return (
     <div>
-      <Ingredient recipeId={recipeId} />
+      <Ingredient ingredient={ingredient} />
     </div>
   );
 }

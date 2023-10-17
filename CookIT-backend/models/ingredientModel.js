@@ -9,6 +9,10 @@ const ingredientSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  userId: {
+    type: String,
+    required: true,
+  },
   imageUrl: {
     type: String,
     required: true,
@@ -21,6 +25,8 @@ const ingredientSchema = new mongoose.Schema({
     type: Number,
   },
 });
+
+ingredientSchema.index({ userId: 1, recipeName: 1 }, { unique: true });
 
 const Ingredient = mongoose.model('Ingredient', ingredientSchema);
 

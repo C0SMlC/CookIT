@@ -42,7 +42,7 @@ if (document.querySelector('.navigation__search-btn')) {
         alert('Please enter a search term.');
       } else {
         window.setTimeout(() => {
-          location.assign('/recipes/' + searchTerm);
+          location.assign('/app/recipes/' + searchTerm);
         }, 500);
       }
     });
@@ -61,7 +61,7 @@ if (document.querySelector('.main__container')) {
       if (mainContent) {
         const recipeId = mainContent.dataset.recipeId;
         window.setTimeout(() => {
-          location.assign('/recipe/' + recipeId);
+          location.assign('/app/recipe/' + recipeId);
         }, 500);
       }
     });
