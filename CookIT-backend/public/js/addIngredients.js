@@ -1,7 +1,12 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export const addIngredients = async (recipe) => {
   const ingredientButton = document.querySelector('.recipe__ingredient-btn');
+  const token = Cookies.get('jwt');
+  console.log('Token:', token);
+
+  console.log('Adding ingredients...');
 
   if (!ingredientButton) {
     console.error('Button not found.');
@@ -10,7 +15,11 @@ export const addIngredients = async (recipe) => {
 
   ingredientButton.textContent = 'Processing...';
   ingredientButton.disabled = true;
+
   console.log(recipe);
+  console.log('Token:', token);
+
+  console.log('Adding ingredients...');
 
   try {
     const recipeName = recipe.title;

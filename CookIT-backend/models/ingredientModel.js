@@ -9,10 +9,10 @@ const ingredientSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userId: {
-    type: String,
-    required: true,
-  },
+  // userId: {
+  //   type: String,
+  //   required: true,
+  // },
   imageUrl: {
     type: String,
     required: true,

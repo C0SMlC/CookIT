@@ -113,14 +113,20 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.getUserId = catchAsync((req, res, next) => {
-  const user = req.jwt;
+exports.getUserId = catchAsync(async (req, res, next) => {
+  const userToken = req.body.jwt;
 
-  
+  const decoded = await promisify(jwt.verify)(
+    userToken,
+    process.env.JWT_SECRET_KEY
+  );
+
+  const userId = decoded.id;
+
   res.status(200).json({
     status: 'success',
     data: {
-      user,
+      userId,
     },
   });
 });
