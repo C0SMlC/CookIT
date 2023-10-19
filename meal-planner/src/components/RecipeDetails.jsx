@@ -7,6 +7,8 @@ import Navigation from "./NavBar";
 
 function RecipeDetails() {
   const [recipes, setRecipes] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [errorMessage, setErrorMessage] = useState(null);
 
   const fetchRecipes = () => {
@@ -17,10 +19,15 @@ function RecipeDetails() {
       withCredentials: true, // Allow sending cookies with the request
     });
 
+    setErrorMessage(null);
+
     axiosInstance
       .get(apiUrl)
       .then((response) => {
+        setErrorMessage(null);
+
         setRecipes(response.data);
+        setIsLoggedIn(true);
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
@@ -28,6 +35,7 @@ function RecipeDetails() {
         } else {
           console.error("Error fetching data:", error);
         }
+        setIsLoggedIn(false);
       });
   };
 
@@ -37,7 +45,7 @@ function RecipeDetails() {
 
   return (
     <>
-      <Navigation />
+      <Navigation isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Stack spacing={"5rem"} mt={"10rem"} ml={"10rem"} mr={"10rem"}>
         <PageTitle />
         {errorMessage ? (
@@ -50,7 +58,9 @@ function RecipeDetails() {
           </Grid>
         ) : (
           <Heading as="h3" size="2xl" noOfLines={2} color={"#b71c1c"} py={5}>
-            No recipes found
+            {isLoggedIn
+              ? "No recipes found."
+              : "Ahem Ahem Ahem! Who are you? Please log in."}
           </Heading>
         )}
       </Stack>

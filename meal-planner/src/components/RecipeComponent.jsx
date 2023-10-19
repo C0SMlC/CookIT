@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 
-import { GridItem, Box, Image, CloseButton } from "@chakra-ui/react";
+import { GridItem, Box, Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
+import CloseButtonComponent from "./CloseButtonComponent";
 
 function RecipeComponent({ recipes, fetchRecipes }) {
   const handleRecipeDeletion = (recipeId) => {
@@ -22,15 +24,15 @@ function RecipeComponent({ recipes, fetchRecipes }) {
     <>
       {recipes.map((recipe) => (
         <GridItem key={recipe.recipeId} w="100%">
-          <Link to={`/app/${recipe.recipeId}`}>
-            <Box
-              maxW="sm"
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              cursor="pointer"
-            >
-              <Box height="200px" overflow="hidden" position="relative">
+          <Box
+            maxW="sm"
+            borderWidth="1px"
+            borderRadius="lg"
+            overflow="hidden"
+            cursor="pointer"
+          >
+            <Box height="200px" overflow="hidden" position="relative">
+              <Link to={`/app/${recipe.recipeId}`}>
                 <Image
                   src={recipe.imageUrl}
                   alt={recipe.recipeName}
@@ -39,20 +41,14 @@ function RecipeComponent({ recipes, fetchRecipes }) {
                   height="100%"
                   position="absolute"
                 />
-                <CloseButton
-                  onClick={() => {
-                    handleRecipeDeletion(recipe.recipeId);
-                  }}
-                  zIndex={2}
-                  position="absolute"
-                  top={2}
-                  right={2}
-                  size="lg"
-                  background={"#D9CDC7"}
-                  fontWeight={"bold"}
-                />
-              </Box>
+              </Link>
+              <CloseButtonComponent
+                recipeId={recipe.recipeId}
+                handleRecipeDeletion={handleRecipeDeletion}
+              />
+            </Box>
 
+            <Link to={`/app/${recipe.recipeId}`}>
               <Box p="6" bg="#263238" border={"1px solid #37474F"}>
                 <Box
                   mt="1"
@@ -68,8 +64,8 @@ function RecipeComponent({ recipes, fetchRecipes }) {
                   {recipe.recipeName}
                 </Box>
               </Box>
-            </Box>
-          </Link>
+            </Link>
+          </Box>
         </GridItem>
       ))}
     </>

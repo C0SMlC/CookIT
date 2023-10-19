@@ -113,6 +113,14 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
+exports.logOut = async (req, res) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: 'success' });
+};
+
 exports.getUserId = catchAsync(async (req, res, next) => {
   const userToken = req.body.jwt;
 

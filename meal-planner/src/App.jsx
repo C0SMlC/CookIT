@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import RecipeDetails from "./components/RecipeDetails";
 import IngredientDetails from "./pages/ingredientDetails";
@@ -8,11 +8,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate replace to="app" />} />
+        <Route path="/app/login" element={<Login />} />
         <Route path="/app" element={<RecipeDetails />} />
         <Route path="/app/:recipeId" element={<IngredientDetails />} />
-
-        <Route path="/login" element={<Login />} />
-
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
     </BrowserRouter>
