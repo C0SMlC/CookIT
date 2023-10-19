@@ -1,4 +1,4 @@
-const request = require('request-promise');
+const axios = require('axios');
 const catchAsync = require('../utils/catchAsync');
 
 const getLandingPage = (req, res) => {
@@ -12,8 +12,8 @@ const getRecipePage = catchAsync(async (req, res, next) => {
   const apiUrl = `https://forkify-api.herokuapp.com/api/v2/recipes?search=${slug}&key=${process.env.FORKIFY_API_KEY}`;
 
   try {
-    const data = await request(apiUrl);
-    const parsedData = JSON.parse(data);
+    const response = await axios.get(apiUrl);
+    const parsedData = response.data;
 
     res.status(200).render('recipes', {
       title: 'Search For Recipes',
@@ -30,8 +30,8 @@ const getRecipe = catchAsync(async (req, res, next) => {
   const apiUrl = `https://forkify-api.herokuapp.com/api/v2/recipes/${slug}`;
 
   try {
-    const data = await request(apiUrl);
-    const parsedData = JSON.parse(data);
+    const response = await axios.get(apiUrl);
+    const parsedData = response.data;
 
     res.status(200).render('recipe', {
       title: parsedData.data.recipe.title,

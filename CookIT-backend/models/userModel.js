@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
+  uid: {
+    type: String,
+    unique: true,
+    immutable: true,
+  },
   name: {
     type: String,
     required: [true, 'Please enter your name'],
@@ -48,6 +54,9 @@ userSchema.pre(/^find/, function (next) {
 });
 
 userSchema.pre('save', async function (next) {
+  if (!this.uid) {
+    this.uid = uuidv4();
+  }
   if (!this.isModified('password')) return next();
   this.password = await bcrypt.hash(this.password, 12);
   this.confirmPassword = undefined;

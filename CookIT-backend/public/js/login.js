@@ -11,10 +11,13 @@ export const login = async (email, password) => {
         password,
       },
     });
+
     if (res.data.status === 'success') {
       showAlert('Logged In Successfully!', 'success');
+      localStorage.setItem('uid', res.data.data.user.uid);
+
       window.setTimeout(() => {
-        location.assign('/');
+        location.assign('/app');
       }, 1500);
     }
   } catch (error) {

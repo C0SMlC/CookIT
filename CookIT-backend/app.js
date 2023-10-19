@@ -94,6 +94,10 @@ app.use(xss());
 
 app.use(compression());
 
+app.get('/', (req, res) => {
+  res.redirect('/app');
+});
+
 app.use('/app', viewRouter);
 
 app.use('/users', userRouter);

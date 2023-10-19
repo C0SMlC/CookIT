@@ -10,7 +10,7 @@ const addIngredient = catchAsync(async (req, res, next) => {
     imageUrl: req.body.imageUrl,
     ingredientName: req.body.ingredientName,
     quantity: req.body.quantity,
-    userId: req.body.userId,
+    uId: req.body.uId,
   });
   res.status(201).json({
     status: 'success',
