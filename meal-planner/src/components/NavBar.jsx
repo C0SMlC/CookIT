@@ -5,7 +5,7 @@ import { handleLogoutFunction } from "./Logout";
 import PropTypes from "prop-types";
 // import { useNavigate } from "react-router-dom";
 
-const Navigation = ({ isLoggedIn, setIsLoggedIn }) => {
+const Navigation = ({ isLoggedIn, setIsLoggedIn, isIngredientPage }) => {
   // let navigate = useNavigate();
 
   const handleLogout = (e) => {
@@ -23,11 +23,7 @@ const Navigation = ({ isLoggedIn, setIsLoggedIn }) => {
       <Flex justify="space-between" align="center">
         <Box>
           <a href="/app">
-            <Image
-              src="./src/assets/logo.png"
-              alt="CookIT Logo"
-              width="100px"
-            />
+            <Image src="/logo.png" alt="CookIT Logo" width="100px" />
           </a>
         </Box>
 
@@ -35,10 +31,14 @@ const Navigation = ({ isLoggedIn, setIsLoggedIn }) => {
           <HStack spacing={"50px"} fontWeight={"bold"} fontSize={"2xl"}>
             <NavLink to={"/"}>Search Recipes</NavLink>
             <NavLink to={"/meal-planner"}>Meal Planner</NavLink>
-            {!isLoggedIn ? (
-              <NavLink to={"/app/login"}>Log In</NavLink>
+            {!isIngredientPage ? (
+              !isLoggedIn ? (
+                <NavLink to={"/app/login"}>Log In</NavLink>
+              ) : (
+                <Button onClick={(e) => handleLogout(e)}>Logout</Button>
+              )
             ) : (
-              <Button onClick={(e) => handleLogout(e)}>Logout</Button>
+              ""
             )}
           </HStack>
         </Box>
@@ -48,9 +48,9 @@ const Navigation = ({ isLoggedIn, setIsLoggedIn }) => {
 };
 
 Navigation.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
-  setIsLoggedIn: PropTypes.func.isRequired,
-  // setErrorMessage: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  setIsLoggedIn: PropTypes.func,
+  isIngredientPage: PropTypes.bool,
 };
 
 export default Navigation;

@@ -1,9 +1,7 @@
 import axios from "axios";
-
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-
-import Ingredient from "../components/ingredient";
+import Ingredient from "../components/Ingredient";
 
 function IngredientDetails() {
   const { recipeId } = useParams();
@@ -25,13 +23,12 @@ function IngredientDetails() {
           console.error("Error fetching data:", error);
         }
       });
-
-    console.log(ingredient);
   };
 
   useEffect(() => {
     fetchIngredient();
   }, [recipeId]);
+
   return (
     <div>
       <Ingredient ingredient={ingredient} />

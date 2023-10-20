@@ -9,7 +9,10 @@ import CloseButtonComponent from "./CloseButtonComponent";
 function RecipeComponent({ recipes, fetchRecipes }) {
   const handleRecipeDeletion = (recipeId) => {
     const apiUrl = `http://localhost:3000/ingredients`;
-    axios
+    const axiosInstance = axios.create({
+      withCredentials: true, // Allow sending cookies with the request
+    });
+    axiosInstance
       .delete(apiUrl, { data: { recipeId } })
       .then(() => {
         console.log("Ingredients deleted successfully.");
