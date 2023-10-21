@@ -1,13 +1,23 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Box, Checkbox, Text, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Checkbox,
+  Text,
+  SimpleGrid,
+  Button,
+  Flex,
+} from "@chakra-ui/react";
+import { CopyIcon } from "@chakra-ui/icons";
 import { motion, AnimatePresence } from "framer-motion";
-
 import Navigation from "./NavBar";
 
 function Ingredient({ ingredient }) {
   const [ingredientData, setIngredientData] = useState(ingredient);
+  const [copyToClipboardText, setCopyToClipboardText] =
+    useState("Copy to clipboard");
+  const [buttonColor, setbuttonColor] = useState("#e62a15");
 
   useEffect(() => {
     setIngredientData(ingredient);
@@ -26,6 +36,17 @@ function Ingredient({ ingredient }) {
     );
 
     setIngredientData(updatedData);
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setCopyToClipboardText("Copied to clipboard");
+      setbuttonColor("#681d1d");
+      setTimeout(() => {
+        setCopyToClipboardText("Copy to clipboard");
+        setbuttonColor("#e62a15");
+      }, 5000);
+    });
   };
 
   return (
@@ -77,6 +98,18 @@ function Ingredient({ ingredient }) {
             ))}
           </SimpleGrid>
         </AnimatePresence>
+        <Flex direction="column" alignItems="center" justifyContent="center">
+          <Button
+            color={buttonColor}
+            colorScheme="whiteAlpha"
+            size="lg"
+            mt="10"
+            onClick={copyToClipboard}
+          >
+            <CopyIcon mr={2} />
+            {copyToClipboardText}
+          </Button>
+        </Flex>
       </Box>
     </>
   );

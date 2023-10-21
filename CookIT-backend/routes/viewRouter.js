@@ -5,8 +5,8 @@ const {
   getLandingPage,
   getRecipePage,
   getLoginForm,
-} = require('../controller/viewController');
-const authController = require('../controller/authController');
+} = require('../controllers/viewController');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 

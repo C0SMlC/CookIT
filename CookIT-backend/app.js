@@ -14,7 +14,7 @@ const viewRouter = require('./routes/viewRouter');
 const userRouter = require('./routes/userRouter');
 const ingredientRouter = require('./routes/IngredientRouter');
 const AppError = require('./utils/AppError');
-const errorController = require('./controller/errorController');
+const errorController = require('./controllers/errorController');
 
 const app = express();
 

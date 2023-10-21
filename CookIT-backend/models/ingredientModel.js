@@ -24,6 +24,10 @@ const ingredientSchema = new mongoose.Schema({
   quantity: {
     type: Number,
   },
+  isShopped: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 ingredientSchema.index(
