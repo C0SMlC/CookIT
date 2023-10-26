@@ -2,7 +2,7 @@
 'use strict';
 
 import { addIngredients } from './addIngredients.js';
-import { login } from './login.js';
+import { login, logout } from './login.js';
 
 // window.addEventListener('load', () => {
 //   const ingredientButton = document.querySelector('.recipe__ingredient-btn');
@@ -78,3 +78,24 @@ if (document.querySelector('.recipe__ingredient-btn'))
       );
       addIngredients(recipe);
     });
+
+if (document.querySelector('.logout')) {
+  document.querySelector('.logout').addEventListener('click', logout);
+}
+
+if (document.querySelector('#uploadRecipeButton')) {
+  document
+    .querySelector('#uploadRecipeButton')
+    .addEventListener('click', () => {
+      alert('The functionality is not yet implemented.');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const searchButton = document.getElementById('searchButton');
+  const searchInput = document.getElementById('searchInput');
+
+  searchButton.addEventListener('click', function () {
+    searchInput.focus();
+  });
+});

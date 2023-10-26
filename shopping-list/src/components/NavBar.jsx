@@ -29,7 +29,7 @@ const Navigation = ({ isLoggedIn, setIsLoggedIn, isIngredientPage }) => {
 
         <Box as="nav">
           <HStack spacing={"50px"} fontWeight={"bold"} fontSize={"2xl"}>
-            <NavLink to={"/"}>Search Recipes</NavLink>
+            <NavLink to={"http://127.0.0.1:3000/app"}>Search Recipes</NavLink>
             <NavLink to={"/meal-planner"}>Meal Planner</NavLink>
             {!isIngredientPage ? (
               !isLoggedIn ? (

@@ -10,7 +10,7 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-router.get('/', getLandingPage);
+router.get('/', authController.isLoggedIn, getLandingPage);
 router.get('/login', getLoginForm);
 
 router.use(authController.protect);
