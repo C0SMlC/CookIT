@@ -38,7 +38,8 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #cfd8dc;
+  background-color: #f1f3f5;
+  /* #cfd8dc; */
 }
 
 .heading-secondary {
@@ -159,7 +160,7 @@ body {
   width: 100%;
   min-height: 10rem;
   padding: 2.5rem 1.5rem;
-  background-color: #ffffff;
+  background-color: #dee2e6;
 }
 
 .main__item-description-list {
@@ -446,7 +447,7 @@ body {
   padding: 4rem 4rem;
   border-radius: 2.5rem;
   list-style: none;
-  background-color: #ffffff;
+  background-color: #ced4da;
   line-height: 5rem;
 }
 
@@ -461,7 +462,7 @@ body {
 }
 .recipe__ingredients-list {
   display: inline-flex;
-  background-color: #ffffff;
+  background-color: #ced4da;
   list-style: none;
   flex-direction: column;
   justify-content: flex-start;
