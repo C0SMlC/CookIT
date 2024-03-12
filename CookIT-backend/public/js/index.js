@@ -3,6 +3,7 @@
 
 import { addIngredients } from './addIngredients.js';
 import { login, logout } from './login.js';
+import { addComment, loadComments } from './comment.js';
 
 // window.addEventListener('load', () => {
 //   const ingredientButton = document.querySelector('.recipe__ingredient-btn');
@@ -33,19 +34,32 @@ if (document.querySelector('.form--login')) {
 }
 
 if (document.querySelector('.navigation__search-btn')) {
-  document
-    .querySelector('.navigation__search-btn')
-    .addEventListener('click', (e) => {
-      const inputField = document.getElementById('searchInput');
-      const searchTerm = inputField.value.trim();
-      if (searchTerm === '') {
-        alert('Please enter a search term.');
-      } else {
-        window.setTimeout(() => {
-          location.assign('/app/recipes/' + searchTerm);
-        }, 500);
-      }
-    });
+  const searchButton = document.querySelector('.navigation__search-btn');
+  const inputField = document.getElementById('searchInput');
+
+  // Function to handle the search action
+  const performSearch = () => {
+    const searchTerm = inputField.value.trim();
+    if (searchTerm === '') {
+      alert('Please enter a search term.');
+    } else {
+      window.setTimeout(() => {
+        location.assign('/app/recipes/' + searchTerm);
+      }, 500);
+    }
+  };
+
+  // Add a click event listener to the search button
+  searchButton.addEventListener('click', (e) => {
+    performSearch();
+  });
+
+  // Add a keydown event listener to the input field to handle Enter key press
+  inputField.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  });
 }
 
 if (document.querySelector('.main__container')) {
@@ -98,4 +112,43 @@ document.addEventListener('DOMContentLoaded', function () {
   searchButton.addEventListener('click', function () {
     searchInput.focus();
   });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const heart = document.querySelector('.like-image');
+
+  heart.addEventListener('click', () => {
+    console.log(heart.src.split('/').pop());
+    // set the opacity to zero
+    heart.style.opacity = 0;
+
+    heart.src =
+      `/img/heart/${heart.src.split('/').pop()}` ===
+      '/img/heart/heart-empty.png'
+        ? '/img/heart/heart-filled.png'
+        : '/img/heart/heart-empty.png';
+
+    // set the opacity back to 1
+    setTimeout(() => {
+      heart.style.opacity = 1;
+    }, 500);
+  });
+});
+
+document.querySelector('.btn-add-comment').addEventListener('click', (e) => {
+  e.preventDefault();
+  let commentText = document.querySelector('.form-text-input').value;
+  if (commentText === '') {
+    alert('Please enter a comment.');
+  }
+  const recipe = JSON.parse(document.querySelector('.recipe').dataset.recipe);
+  console.log(recipe, commentText);
+  addComment(recipe, commentText);
+  loadComments(recipe.id);
+});
+
+document.querySelector('.load-comments-btn').addEventListener('click', (e) => {
+  e.preventDefault();
+  const recipe = JSON.parse(document.querySelector('.recipe').dataset.recipe);
+  loadComments(recipe.id);
 });

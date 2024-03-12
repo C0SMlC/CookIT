@@ -31,7 +31,10 @@ block content
                         span
                             span.recipe__nutrition-value 100
                 if user            
-                    .btn-margin        
+                    .btn-margin
+                        .like-cotnainer   
+                           span 789
+                           img.like-image(src="./img/heart/heart-empty.png", alt="Like Button Animation")
                         button.btn-primary Add To Meal Planner
                         button.btn-primary Bookmark
                 else 
@@ -59,3 +62,26 @@ block content
                     | .
                     |             Please check out directions at their website.
                 a.btn-primary.margin-top-5rem(href=`${recipe.source_url}` target='_blank') Directions
+        .recipe__comments.margin-5rem 
+             .center-text
+                h3.heading-tertiary.margin-bottom-8rem Comments
+                // inpout text 
+                form
+                    .form-group
+                        label.form-label
+                            | Comment:
+                        textarea.form-text-input(type='text', name='comment', placeholder='Enter your comment')
+                        button.btn-add-comment
+                            | Submit
+             section.comments
+                 if !comments
+                     button.load-comments-btn Load Comments
+                 else if comments.length === 0
+                     p.no-comments No comments added yet.
+                 else
+                    each comment in comments
+                        .comment
+                            .user-photo
+                            img(src=comment.userPhotoUrl, alt=`${comment.userName}'s Photo`)
+                            .comment-body
+                            p.comment-text= comment.text
