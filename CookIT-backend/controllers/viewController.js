@@ -1,4 +1,5 @@
 const axios = require('axios');
+const Like = require('../models/likeModel');
 const catchAsync = require('../utils/catchAsync');
 
 const getLandingPage = (req, res) => {
@@ -33,9 +34,15 @@ const getRecipe = catchAsync(async (req, res, next) => {
     const response = await axios.get(apiUrl);
     const parsedData = response.data;
 
+    const likes = await Like.countDocuments({
+      recipeId: parsedData.data.recipe.id,
+    });
+
+    parsedData.data.recipe[likes] = likes || 0;
     res.status(200).render('recipe', {
       title: parsedData.data.recipe.title,
       recipe: parsedData.data.recipe,
+      likes,
     });
   } catch (error) {
     next(error);

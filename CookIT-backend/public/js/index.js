@@ -118,20 +118,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const heart = document.querySelector('.like-image');
 
   heart.addEventListener('click', () => {
-    console.log(heart.src.split('/').pop());
-    // set the opacity to zero
-    heart.style.opacity = 0;
+   
+    const recipe = JSON.parse(document.querySelector('.recipe').dataset.recipe);
+    const userId = localStorage.getItem('uid');
 
-    heart.src =
-      `/img/heart/${heart.src.split('/').pop()}` ===
-      '/img/heart/heart-empty.png'
-        ? '/img/heart/heart-filled.png'
-        : '/img/heart/heart-empty.png';
-
-    // set the opacity back to 1
-    setTimeout(() => {
-      heart.style.opacity = 1;
-    }, 500);
+    fetch(`/recipe/like/${recipe.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId, recipeId: recipe.id }), // Assuming you have access to the current user's ID
+    })
+      .then((response) => {
+        // Handle the response as needed
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   });
 });
 

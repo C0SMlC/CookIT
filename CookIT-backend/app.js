@@ -12,6 +12,7 @@ const cors = require('cors');
 
 const viewRouter = require('./routes/viewRouter');
 const userRouter = require('./routes/userRouter');
+const recipeRouter = require('./routes/recipeRouter');
 const ingredientRouter = require('./routes/IngredientRouter');
 const commentRouter = require('./routes/commentRouter');
 const AppError = require('./utils/AppError');
@@ -104,6 +105,7 @@ app.use('/app', viewRouter);
 app.use('/users', userRouter);
 app.use('/ingredients', ingredientRouter);
 app.use('/comments', commentRouter);
+app.use('/recipe', recipeRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can not find ${req.originalUrl} on this server`, 404));
