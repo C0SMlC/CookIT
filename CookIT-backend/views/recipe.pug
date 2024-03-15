@@ -35,11 +35,27 @@ block content
                         .like-cotnainer   
                            span #{likes}
                            img.like-image(src="./img/heart/heart-filled.png", alt="Like Button Animation")
-                        button.btn-primary Add To Meal Planner
+                        button.btn-primary.btn-add-to-meal Add To Meal Planner
                         button.btn-primary Bookmark
                 else 
                     .center-text
                         a.linkText(href='/') Log in to add to meal planner
+
+            .container
+                .card
+                    h2.addToMealHeader Add Meal
+                    form
+                    .form-group
+                        label(for="meal-type") Type
+                        select#meal-type.form-control
+                            option(value="") Select Meal Type
+                            option(value="breakfast") Breakfast
+                            option(value="lunch") Lunch
+                            option(value="dinner") Dinner
+                    .form-group
+                        label(for="meal-date") Date
+                        input#meal-date.form-control(type="date" placeholder="Select Date")
+                    button.btn.btn-primary.btn-add-meal-db.add-meal-btn(type="submit") Add Meal
             .recipe__ingredients
                 .center-text
                     h3.heading-tertiary.padding-bottom-2rem Ingredients

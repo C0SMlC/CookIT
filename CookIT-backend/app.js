@@ -15,6 +15,7 @@ const userRouter = require('./routes/userRouter');
 const recipeRouter = require('./routes/recipeRouter');
 const ingredientRouter = require('./routes/IngredientRouter');
 const commentRouter = require('./routes/commentRouter');
+const mealPlannerRouter = require('./routes/mealPlannerRouter');
 const AppError = require('./utils/AppError');
 const errorController = require('./controllers/errorController');
 
@@ -106,6 +107,7 @@ app.use('/users', userRouter);
 app.use('/ingredients', ingredientRouter);
 app.use('/comments', commentRouter);
 app.use('/recipe', recipeRouter);
+app.use('/mealplanner', mealPlannerRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can not find ${req.originalUrl} on this server`, 404));

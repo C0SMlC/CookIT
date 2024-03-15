@@ -49,6 +49,12 @@ const getRecipe = catchAsync(async (req, res, next) => {
   }
 });
 
+const getMealPlannerPage = catchAsync(async (req, res, next) => {
+  res.status(200).render('mealPlanner', {
+    title: 'Meal Planner',
+  });
+});
+
 const getLoginForm = catchAsync(async (req, res, next) => {
   res.status(200).render('login', {
     title: 'Log In',
@@ -59,5 +65,6 @@ module.exports = {
   getLandingPage,
   getRecipe,
   getRecipePage,
+  getMealPlannerPage,
   getLoginForm,
 };

@@ -3,12 +3,15 @@ const express = require('express');
 const {
   getRecipe,
   getLandingPage,
+  getMealPlannerPage,
   getRecipePage,
   getLoginForm,
 } = require('../controllers/viewController');
 const authController = require('../controllers/authController');
 
 const router = express.Router();
+
+router.get('/mealPlanner', authController.isLoggedIn, getMealPlannerPage);
 
 router.get('/', authController.isLoggedIn, getLandingPage);
 router.get('/login', getLoginForm);
