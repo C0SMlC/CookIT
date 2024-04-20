@@ -128,6 +128,7 @@ if (document.querySelector('#searchButton'))
 
 document.addEventListener('DOMContentLoaded', () => {
   const heart = document.querySelector('.like-image');
+  const likeCount = document.querySelector('.like-count');
 
   if (!heart) {
     console.error('Heart element not found.');
@@ -147,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
       .then((response) => {
         console.log(response);
+        if (response.ok) likeCount.textContent = +likeCount.textContent + 1;
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -396,6 +398,46 @@ if (document.querySelector('.btn-add-meal-db')) {
     .querySelector('.btn-add-meal-db')
     .addEventListener('click', () => addToMealPlanner(recipe));
 }
+
+//chatbot
+
+document.getElementById('send-button').addEventListener('click', function () {
+  let userInput = document.getElementById('chat-input').value;
+
+  if (userInput) {
+    let chatLogs = document.getElementById('chat-logs');
+
+    let userDiv = document.createElement('div');
+    userDiv.classList.add('chat-self');
+    userDiv.textContent = userInput;
+    chatLogs.appendChild(userDiv);
+
+    // Clear the user input
+    document.getElementById('chat-input').value = '';
+
+    // Scroll to the latest message
+    chatLogs.scrollTop = chatLogs.scrollHeight;
+
+    // Chatbot response
+    setTimeout(function () {
+      let chatbotDiv = document.createElement('div');
+      chatbotDiv.classList.add('chat-bot');
+      chatbotDiv.textContent = 'Hello! How can I assist you today?';
+      chatLogs.appendChild(chatbotDiv);
+
+      // Scroll to the latest message
+      chatLogs.scrollTop = chatLogs.scrollHeight;
+    }, 1000);
+  }
+});
+
+//open chatbot
+
+document.querySelector('#chatbot-button').addEventListener('click', () => {
+  document.querySelector('#chatbot').style.display = 'block';
+  document.querySelector('#chatbot-button').style.display = 'none';
+  document.querySelector('#close-chatbot').style.display = 'block';
+});
 
 // document
 //   .querySelector('.navigation__mealplanner-btn')

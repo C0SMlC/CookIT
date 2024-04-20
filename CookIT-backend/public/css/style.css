@@ -1052,3 +1052,83 @@ label {
 .hide-popup {
   display: none;
 }
+
+/* chatbot-card */
+
+.chatbot {
+  background-color: #263238;
+}
+
+#chatbot-button {
+  position: absolute;
+  top: 84%;
+  right: 2%;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+}
+
+#chat-logs {
+  padding: 10px;
+  height: 400px;
+  overflow-y: auto;
+  background-color: #1d252c;
+}
+
+.chat-self {
+  background: #007bff;
+  color: white;
+  float: right;
+  max-width: 60%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  clear: both;
+  animation: slide 0.5s ease;
+}
+
+#chatbot {
+  position: absolute;
+  top: 30%;
+  right: 2%;
+  height: 100px;
+  width: 35rem;
+  display: none;
+  border-radius: 1px solid #007bff;
+}
+
+.chat-bot {
+  background: #eee;
+  float: left;
+  max-width: 60%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  clear: both;
+  animation: slide 0.5s ease;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#chat-input {
+  border: none;
+  padding: 10px;
+  width: 80%;
+}
+
+#send-button {
+  width: 20%;
+  border: none;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+}
