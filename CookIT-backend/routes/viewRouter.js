@@ -6,13 +6,14 @@ const {
   getMealPlannerPage,
   getRecipePage,
   getLoginForm,
+  getBookmarksPage,
 } = require('../controllers/viewController');
 const authController = require('../controllers/authController');
 
 const router = express.Router();
 
 router.get('/mealPlanner', authController.isLoggedIn, getMealPlannerPage);
-
+router.get('/bookmarks', authController.isLoggedIn, getBookmarksPage);
 router.get('/', authController.isLoggedIn, getLandingPage);
 router.get('/login', getLoginForm);
 

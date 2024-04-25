@@ -1,0 +1,13 @@
+extends base
+
+block content 
+    main.main
+        h2.heading-secondary.margin-bottom-2rem #{countRecipes} Bookmarks
+        .main__container
+            each bookmark in bookmarks
+                .main__content(data-recipe-id=`${bookmark.recipeId}`)
+                    img.main__img-box(src=`${bookmark.url}` alt=`${bookmark.title}`)
+                    .main__description-box
+                        h3.sub-heading.sub-heading-main
+                            |#{bookmark.title}
+                        

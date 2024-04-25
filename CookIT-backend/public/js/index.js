@@ -6,6 +6,9 @@ import { addIngredients } from './addIngredients.js';
 import { addToMealPlanner, getMealPlanner } from './addToMealPlanner.js';
 import { login, logout } from './login.js';
 import { addComment, loadComments } from './comment.js';
+import { generateAIResponse } from './ai.js';
+import { addBookmark, getUserBookmarks } from './addBookmark.js';
+
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css'; // Import Flatpickr CSS
 
@@ -131,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const likeCount = document.querySelector('.like-count');
 
   if (!heart) {
-    console.error('Heart element not found.');
     return;
   }
 
@@ -401,43 +403,67 @@ if (document.querySelector('.btn-add-meal-db')) {
 
 //chatbot
 
-document.getElementById('send-button').addEventListener('click', function () {
-  let userInput = document.getElementById('chat-input').value;
+if (document.getElementById('send-button')) {
+  document
+    .getElementById('send-button')
+    .addEventListener('click', async function () {
+      let userInput = document.getElementById('chat-input').value;
 
-  if (userInput) {
-    let chatLogs = document.getElementById('chat-logs');
-
-    let userDiv = document.createElement('div');
-    userDiv.classList.add('chat-self');
-    userDiv.textContent = userInput;
-    chatLogs.appendChild(userDiv);
-
-    // Clear the user input
-    document.getElementById('chat-input').value = '';
-
-    // Scroll to the latest message
-    chatLogs.scrollTop = chatLogs.scrollHeight;
-
-    // Chatbot response
-    setTimeout(function () {
-      let chatbotDiv = document.createElement('div');
-      chatbotDiv.classList.add('chat-bot');
-      chatbotDiv.textContent = 'Hello! How can I assist you today?';
-      chatLogs.appendChild(chatbotDiv);
-
-      // Scroll to the latest message
-      chatLogs.scrollTop = chatLogs.scrollHeight;
-    }, 1000);
-  }
-});
-
+      if (userInput) {
+        document.getElementById('chat-input').value = '';
+        let chatLogs = document.getElementById('chat-logs');
+        let userDiv = document.createElement('div');
+        userDiv.classList.add('chat-self');
+        userDiv.textContent = userInput;
+        chatLogs.appendChild(userDiv);
+        chatLogs.scrollTop = chatLogs.scrollHeight;
+        const response = await generateAIResponse(userInput);
+        console.log(response);
+        setTimeout(function () {
+          let chatbotDiv = document.createElement('div');
+          chatbotDiv.classList.add('chat-bot');
+          chatbotDiv.innerHTML = response;
+          chatLogs.appendChild(chatbotDiv);
+          chatLogs.scrollTop = chatLogs.scrollHeight;
+        }, 100);
+      }
+    });
+}
 //open chatbot
 
-document.querySelector('#chatbot-button').addEventListener('click', () => {
-  document.querySelector('#chatbot').style.display = 'block';
-  document.querySelector('#chatbot-button').style.display = 'none';
-  document.querySelector('#close-chatbot').style.display = 'block';
-});
+if (document.querySelector('#chatbot-button')) {
+  document.querySelector('#chatbot-button').addEventListener('click', () => {
+    document.querySelector('#chatbot').style.display = 'block';
+    document.querySelector('#chatbot-button').style.display = 'none';
+    // document.querySelector('#close-chatbot').style.display = 'block';
+  });
+}
+
+if (document.querySelector('.chatbot__close-btn')) {
+  document
+    .querySelector('.chatbot__close-btn')
+    .addEventListener('click', () => {
+      document.querySelector('#chatbot').style.display = 'none';
+      document.querySelector('#chatbot-button').style.display = 'block';
+    });
+}
+
+if (document.querySelector('.recipe__bookmark-btn')) {
+  const recipe = JSON.parse(document.querySelector('.recipe').dataset.recipe);
+  const { bookmarkRecipeId } = (await getUserBookmarks()).data;
+
+  console.log(bookmarkRecipeId);
+
+  if (bookmarkRecipeId.includes(recipe.id))
+    document.querySelector('.recipe__bookmark-btn').textContent =
+      'Bookmarked 👍';
+
+  document
+    .querySelector('.recipe__bookmark-btn')
+    .addEventListener('click', () => {
+      addBookmark(recipe);
+    });
+}
 
 // document
 //   .querySelector('.navigation__mealplanner-btn')

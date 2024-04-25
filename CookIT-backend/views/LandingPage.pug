@@ -58,8 +58,15 @@ block content
             img.footer__img(src='./img/footer/image-footer-1.png' alt='Cook great food at home')
     // Chatbot Section
     section.chatbot
-        button#chatbot-button Open Chat
+        div#chatbot-button
         div#chatbot
+            div.chatbot__header
+                div.chatbot__header-info
+                    div.photo
+                        img(src="https://xsgames.co/randomusers/avatar.php?g=pixel" alt="Chatbot Photo")
+                    div.name
+                        span Chatbot
+                button.chatbot__close-btn Close
             div#chat-logs
             div.input__group
                 input#chat-input(type="text", placeholder="Type your message...")

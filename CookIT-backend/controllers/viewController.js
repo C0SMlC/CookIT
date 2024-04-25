@@ -61,8 +61,30 @@ const getLoginForm = catchAsync(async (req, res, next) => {
   });
 });
 
+const getBookmarksPage = async (req, res) => {
+  const userId = req.body.uId;
+
+  try {
+    const apiUrl = `http://127.0.0.1:3000/bookmark/${userId}`;
+    const response = await axios.get(apiUrl);
+
+    console.log(JSON.stringify(response.data.data.bookmarks));
+
+    const bookmarksData = response.data.data.bookmarks;
+
+    res.status(200).render('bookmarks', {
+      title: 'Bookmarks',
+      bookmarks: bookmarksData,
+    });
+  } catch (error) {
+    console.error('Error fetching bookmarks:', error.message); // Log only the error message
+    res.status(500).send('Error fetching bookmarks'); // Send a generic error message to the client
+  }
+};
+
 module.exports = {
   getLandingPage,
+  getBookmarksPage,
   getRecipe,
   getRecipePage,
   getMealPlannerPage,

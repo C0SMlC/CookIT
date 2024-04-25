@@ -39,7 +39,6 @@ export const loadComments = async (recipeId) => {
       method: 'GET',
       url: `/comments/recipe/${recipeId}`,
     });
-    console.log('qenkqenkdandkasmdksad', response.data.data.comments);
     renderComments(response.data.data.comments);
   } catch (error) {
     console.error(error);

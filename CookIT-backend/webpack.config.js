@@ -15,4 +15,13 @@ module.exports = {
       },
     ],
   },
+  // resolve: {
+  //   extensions: ['.js', '.json'],
+  //   alias: {
+  //     '@google/generative-ai': path.resolve(
+  //       __dirname,
+  //       'node_modules/@google/generative-ai/dist/generative-ai.min.js'
+  //     ),
+  //   },
+  // },
 };

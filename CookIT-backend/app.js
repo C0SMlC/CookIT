@@ -15,6 +15,7 @@ const userRouter = require('./routes/userRouter');
 const recipeRouter = require('./routes/recipeRouter');
 const ingredientRouter = require('./routes/IngredientRouter');
 const commentRouter = require('./routes/commentRouter');
+const bookmarkRouter = require('./routes/bookmarkRouter');
 const mealPlannerRouter = require('./routes/mealPlannerRouter');
 const AppError = require('./utils/AppError');
 const errorController = require('./controllers/errorController');
@@ -105,6 +106,7 @@ app.use('/app', viewRouter);
 
 app.use('/users', userRouter);
 app.use('/ingredients', ingredientRouter);
+app.use('/bookmark', bookmarkRouter);
 app.use('/comments', commentRouter);
 app.use('/recipe', recipeRouter);
 app.use('/mealplanner', mealPlannerRouter);
