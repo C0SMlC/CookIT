@@ -55,14 +55,15 @@ function renderComments(comments) {
   comments.forEach((comment) => {
     const commentElement = document.createElement('div');
     commentElement.classList.add('comment');
-
     const userPhotoElement = document.createElement('div');
     userPhotoElement.classList.add('user-photo');
     const photoImg = document.createElement('img');
-    photoImg.src = `https://lorempokemon.fakerapi.it/pokemon`; // Use random faces from Unsplash
+    // Generate a new random URL for each comment
+    photoImg.src = `https://lorempokemon.fakerapi.it/pokemon/${Math.floor(
+      Math.random() * 1000
+    )}/977`;
     photoImg.alt = `User Photo`;
     userPhotoElement.appendChild(photoImg);
-
     const commentBodyElement = document.createElement('div');
     commentBodyElement.classList.add('comment-body');
     const userNameElement = document.createElement('p');
@@ -73,10 +74,8 @@ function renderComments(comments) {
     commentTextElement.textContent = comment.text;
     commentBodyElement.appendChild(userNameElement);
     commentBodyElement.appendChild(commentTextElement);
-
     commentElement.appendChild(userPhotoElement);
     commentElement.appendChild(commentBodyElement);
-
     commentsContainer.appendChild(commentElement);
   });
 

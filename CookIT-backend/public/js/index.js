@@ -6,7 +6,7 @@ import { addIngredients } from './addIngredients.js';
 import { addToMealPlanner, getMealPlanner } from './addToMealPlanner.js';
 import { login, logout } from './login.js';
 import { addComment, loadComments } from './comment.js';
-import { generateAIResponse } from './ai.js';
+import { generateAIResponse, sendMessage } from './ai.js';
 import { addBookmark, getUserBookmarks } from './addBookmark.js';
 
 import flatpickr from 'flatpickr';
@@ -170,16 +170,10 @@ if (document.querySelector('.btn-add-comment'))
     loadComments(recipe.id);
   });
 
-if (document.querySelector('.load-comments-btn'))
-  document
-    .querySelector('.load-comments-btn')
-    .addEventListener('click', (e) => {
-      e.preventDefault();
-      const recipe = JSON.parse(
-        document.querySelector('.recipe').dataset.recipe
-      );
-      loadComments(recipe.id);
-    });
+if (document.querySelector('.recipe__comments')) {
+  const recipe = JSON.parse(document.querySelector('.recipe').dataset.recipe);
+  loadComments(recipe.id);
+}
 
 const mealPlannerBtn = document.querySelector('.navigation__mealplanner-btn');
 
@@ -404,30 +398,13 @@ if (document.querySelector('.btn-add-meal-db')) {
 //chatbot
 
 if (document.getElementById('send-button')) {
-  document
-    .getElementById('send-button')
-    .addEventListener('click', async function () {
-      let userInput = document.getElementById('chat-input').value;
+  document.getElementById('send-button').addEventListener('click', sendMessage);
 
-      if (userInput) {
-        document.getElementById('chat-input').value = '';
-        let chatLogs = document.getElementById('chat-logs');
-        let userDiv = document.createElement('div');
-        userDiv.classList.add('chat-self');
-        userDiv.textContent = userInput;
-        chatLogs.appendChild(userDiv);
-        chatLogs.scrollTop = chatLogs.scrollHeight;
-        const response = await generateAIResponse(userInput);
-        console.log(response);
-        setTimeout(function () {
-          let chatbotDiv = document.createElement('div');
-          chatbotDiv.classList.add('chat-bot');
-          chatbotDiv.innerHTML = response;
-          chatLogs.appendChild(chatbotDiv);
-          chatLogs.scrollTop = chatLogs.scrollHeight;
-        }, 100);
-      }
-    });
+  document.getElementById('chat-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      sendMessage();
+    }
+  });
 }
 //open chatbot
 
@@ -443,6 +420,7 @@ if (document.querySelector('.chatbot__close-btn')) {
   document
     .querySelector('.chatbot__close-btn')
     .addEventListener('click', () => {
+      document.querySelector('#chatbot').style.display = 0;
       document.querySelector('#chatbot').style.display = 'none';
       document.querySelector('#chatbot-button').style.display = 'block';
     });

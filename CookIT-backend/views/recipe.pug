@@ -3,8 +3,9 @@ extends base
 block content 
     main.recipe(data-recipe=`${JSON.stringify(recipe)}`)
         .recipe__details
-            h1.recipe__title.heading-secondary.padding-top-2rem
+            h1.recipe__title.heading-secondary.padding-top-2rem.no-center
                 | #{recipe.title}
+                span.header-main-span .
             .recipe__img-wrapper    
                 img.recipe__img(src=`${recipe.image_url}` alt='Chicken Burger')
             .recipe__nutrition-container
@@ -56,48 +57,47 @@ block content
                         label(for="meal-date") Date
                         input#meal-date.form-control(type="date" placeholder="Select Date")
                     button.btn.btn-primary.btn-add-meal-db.add-meal-btn(type="submit") Add Meal
-            .recipe__ingredients
-                .center-text
-                    h3.heading-tertiary.padding-bottom-2rem Ingredients
-                ul.recipe__ingredients-list.margin-top-5rem
-                    for ingredient in recipe.ingredients
-                        li.recipe__ingredient
-                            span #{ingredient.quantity} #{ingredient.unit} #{ingredient.description}
-                .center-text.margin-top-5rem
-                    if user
-                        button.btn-primary.recipe__ingredient-btn
-                            | Add to shopping list
-                    else
-                        a.linkText Log In to add to shopping list
-        .recipe__instruction.margin-5rem
-            .center-text
-                h3.heading-tertiary.margin-bottom-2rem HOW TO COOK IT
-                p.recipe__instruction-text
-                    | This recipe was carefully designed and tested by 
-                    span.recipe__instruction-author  #{recipe.publisher}
-                    | .
-                    |             Please check out directions at their website.
-                a.btn-primary.margin-top-5rem(href=`${recipe.source_url}` target='_blank') Directions
-        .recipe__comments.margin-5rem 
-             .center-text
-                h3.heading-tertiary.margin-bottom-8rem Comments
-                // inpout text 
-                form
-                    .form-group
-                        label.form-label
-                            | Comment:
-                        textarea.form-text-input(type='text', name='comment', placeholder='Enter your comment')
-                        button.btn-add-comment
-                            | Submit
-             section.comments
-                 if !comments
-                     button.load-comments-btn Load Comments
-                 else if comments.length === 0
-                     p.no-comments No comments added yet.
-                 else
-                    each comment in comments
-                        .comment
-                            .user-photo
-                            img(src=comment.userPhotoUrl, alt=`${comment.userName}'s Photo`)
-                            .comment-body
-                            p.comment-text= comment.text
+            .grid__container.span__two
+                .recipe__ingredients
+                    ul.recipe__ingredients-list.margin-top-5rem
+                        .center-text
+                            h3.heading-tertiary.padding-bottom-4rem Ingredients
+                        for ingredient in recipe.ingredients
+                            li.recipe__ingredient
+                                span #{ingredient.quantity} #{ingredient.unit} #{ingredient.description}
+                        .center-text.margin-top-5rem
+                            if user
+                                button.btn-primary.recipe__ingredient-btn
+                                    | Add to shopping list
+                            else
+                                a.linkText Log In to add to shopping list
+                .recipe__instruction.margin__top-9rem
+                    .center-text
+                        h3.heading-tertiary.margin-bottom-2rem HOW TO COOK IT
+                        p.recipe__instruction-text
+                            | This recipe was carefully designed and tested by 
+                            span.recipe__instruction-author  #{recipe.publisher}
+                            | .
+                            |             Please check out directions at their website.
+                        a.btn-primary.margin-top-5rem(href=`${recipe.source_url}` target='_blank') Directions
+                .recipe__comments
+                    .center-text
+                        h3.heading-tertiary.margin__bottom-3rem Comments
+                        // inpout text 
+                        form
+                            .form-group
+                                input.form-text-input(type='text', name='comment', placeholder='Enter your comment')
+                                button.btn-add-comment.btn-primary
+                                    | Submit
+                    section.comments
+                        if !comments
+                            //-  button.load-comments-btn Load Comments
+                        else if comments.length === 0
+                            p.no-comments No comments added yet.
+                        else
+                            each comment in comments
+                                .comment
+                                    .user-photo
+                                    img(src=comment.userPhotoUrl, alt=`${comment.userName}'s Photo`)
+                                    .comment-body
+                                    p.comment-text= comment.text

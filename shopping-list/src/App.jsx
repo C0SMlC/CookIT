@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import RecipeDetails from "./components/RecipeDetails";
-import IngredientDetails from "./pages/ingredientDetails";
+import IngredientDetails from "./pages/IngredientDetails";
 import Login from "./components/Login";
 
 function App() {
